@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tropa de Elite">
+  <defs>
+    <linearGradient id="ouro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d77a"/><stop offset=".55" stop-color="#e0ac34"/><stop offset="1" stop-color="#a8741a"/>
+    </linearGradient>
+    <linearGradient id="osso" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e9d2"/><stop offset="1" stop-color="#cdbb93"/>
+    </linearGradient>
+    <linearGradient id="esmeralda" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ef0b8"/><stop offset=".5" stop-color="#1fa36b"/><stop offset="1" stop-color="#0b5a3a"/>
+    </linearGradient>
+  </defs>
+  <!-- escudo -->
+  <path d="M256 18 L458 78 V248 C458 372 370 452 256 494 C142 452 54 372 54 248 V78 Z" fill="#15120e" stroke="url(#ouro)" stroke-width="12"/>
+  <path d="M256 44 L434 96 V250 C434 358 358 428 256 466 C154 428 78 358 78 250 V96 Z" fill="none" stroke="#e0ac34" stroke-opacity=".35" stroke-width="3"/>
+  <!-- caveira -->
+  <path d="M176 196 H336 C354 240 352 292 328 316 L320 344 H192 L184 316 C160 292 158 240 176 196 Z" fill="url(#osso)"/>
+  <path d="M198 258 L248 270 C250 296 234 308 214 304 C198 300 192 280 198 258 Z" fill="#15120e"/>
+  <path d="M314 258 L264 270 C262 296 278 308 298 304 C314 300 320 280 314 258 Z" fill="#15120e"/>
+  <circle cx="226" cy="284" r="5" fill="#3ee09a"/>
+  <circle cx="286" cy="284" r="5" fill="#3ee09a"/>
+  <path d="M256 300 L244 328 H268 Z" fill="#15120e"/>
+  <path d="M200 342 H312 L302 386 C282 400 230 400 210 386 Z" fill="#15120e"/>
+  <rect x="209" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="225" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="241" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="257" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="273" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="289" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="215" y="366" width="13" height="15" rx="4" fill="url(#osso)"/>
+  <rect x="230" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="245" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="260" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="275" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="290" y="366" width="13" height="15" rx="4" fill="url(#osso)"/>
+  <path d="M184 316 C200 326 210 326 222 318" fill="none" stroke="#15120e" stroke-opacity=".25" stroke-width="5" stroke-linecap="round"/>
+  <path d="M328 316 C312 326 302 326 290 318" fill="none" stroke="#15120e" stroke-opacity=".25" stroke-width="5" stroke-linecap="round"/>
+  <rect x="170" y="206" width="172" height="12" fill="#15120e" opacity=".22"/>
+  <!-- coroa -->
+  <path d="M160 200 L166 104 L212 146 L256 70 L300 146 L346 104 L352 200 Z" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="152" y="176" width="208" height="32" rx="6" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <circle cx="166" cy="98" r="11" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <circle cx="346" cy="98" r="11" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <path d="M256 50 L266 66 L256 80 L246 66 Z" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M256 166 L274 192 L256 218 L238 192 Z" fill="url(#esmeralda)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="200" cy="192" r="6" fill="#6e4a0e"/><circle cx="312" cy="192" r="6" fill="#6e4a0e"/>
+</svg>
