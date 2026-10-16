@@ -1,4 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Tropa de Elite · Clash of Clans</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tropa de Elite · Clash of Clans</title>
 <meta name="description" content="Ranking das guerras do clã Tropa de Elite: pódio do mês, linha de corte do top 15 e vagas da Liga.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tropa de Elite">
@@ -12,142 +17,202 @@
 <meta name="theme-color" content="#0d0b08">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-</head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800;6..12,900&display=swap">
 <style>
-/* Identidade única escura do escudo do clã (preto, ouro, esmeralda). Layout: brasão + placar no topo, pódio, ranking com linha de corte do top 15, histórico guerra a guerra */
 :root{
-  --bg:#0d0b08; --panel:#17140f; --panel2:#1f1b14; --line:#2f2920; --fg:#f3ebda; --muted:#a69a83;
+  --bg:#0b0906; --panel:#16130e; --panel2:#1f1b14; --line:#2f2920; --fg:#f3ebda; --muted:#a69a83;
   --gold:#e8b53e; --gold2:#f6d77a; --gold-soft:#3a2d10; --emer:#3ee09a; --emer-soft:#10301f;
-  --silver:#c9d1db; --bronze:#d08a52;
-  --ok:#5fd79a; --ok-soft:#14301f; --warn:#f0ad5c; --warn-soft:#382711; --bad:#ff8378; --bad-soft:#3b1a17;
+  --silver:#c9d1db; --bronze:#d08a52; --bad:#ff8378; --bad-soft:#3b1a17; --warn:#f0ad5c;
   --display:"Lilita One","Arial Rounded MT Bold",system-ui,sans-serif;
   --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:radial-gradient(1100px 520px at 50% -160px,#33270f 0%,transparent 70%) var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
-.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:32px}
-button{font:inherit;color:inherit}
-button:focus-visible{outline:2px solid var(--emer);outline-offset:2px}
-/* topo */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
-.crest{width:120px;height:120px;filter:drop-shadow(0 8px 26px rgba(232,181,62,.3))}
-@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}.crest{width:96px;height:96px}}
-.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,7vw,58px);line-height:.95;margin:4px 0 8px;letter-spacing:.5px;text-wrap:balance}
-h1 span{background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,#a8741a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.upd{font-size:12px;color:var(--muted)}
-h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0;letter-spacing:.3px}
-.sec-sub{color:var(--muted);font-size:13px;margin:2px 0 0}
-section{display:flex;flex-direction:column;gap:14px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:5px;background:var(--panel);border:1px solid var(--line);border-radius:999px;width:fit-content}
-@media (max-width:560px){.tabs{margin:0 auto}}
-.tabs button{font-weight:800;font-size:14px;padding:9px 18px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer}
-.tabs button[aria-selected="true"]{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#15120e}
-/* placar */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-@media (max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
-.stat small{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:800}
-.stat b{font-family:var(--display);font-weight:400;font-size:32px;line-height:1.05;font-variant-numeric:tabular-nums}
-.stat em{font-style:normal;font-size:12px;color:var(--muted)}
-.meter{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:6px}
-.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--emer),#1fa36b)}
-/* pódio */
-.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:end}
-@media (max-width:640px){.podium{grid-template-columns:1fr}.podium .p1{order:-1}}
-.pod{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 16px 16px;text-align:center;display:flex;flex-direction:column;gap:6px;overflow:hidden}
-.pod::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--c)}
-.pod.p1{--c:linear-gradient(90deg,var(--gold2),var(--gold));padding-block:26px 20px;background:linear-gradient(180deg,#2a2110,var(--panel) 70%)}
-.pod.p2{--c:var(--silver)} .pod.p3{--c:var(--bronze)}
-.pod .pos{font-family:var(--display);font-size:15px;color:var(--muted);letter-spacing:.06em}
-.pod.p1 .pos{color:var(--gold)}
-.pod .nm{font-weight:900;font-size:19px;line-height:1.2;overflow-wrap:anywhere}
-.pod.p1 .nm{font-size:23px}
-.pod .big{font-family:var(--display);font-size:34px;line-height:1}
-.pod.p1 .big{font-size:44px;color:var(--gold)}
-.pod .det{font-size:12px;color:var(--muted)}
-/* ranking */
-.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px}
-.sort{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
-.sort button{font-size:13px;font-weight:800;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel);cursor:pointer}
-.sort button[aria-pressed="true"]{border-color:var(--emer);color:var(--emer)}
-.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:640px}
-th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;background:var(--panel2)}
-td.n,th.n{text-align:right}
-tbody tr:last-child td{border-bottom:0}
-tbody tr:hover td{background:rgba(232,181,62,.04)}
-td.name{font-weight:800}
-td.rk{font-family:var(--display);font-size:16px;color:var(--muted);width:44px}
-tr.top td.rk{color:var(--gold)}
-tr.cut td{border-bottom:2px dashed var(--gold)}
-tr.cutlabel td{background:var(--gold-soft);color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:5px}
-.zone{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:2px}
-.zone.liga{background:var(--emer-soft);color:var(--emer)}
-.zone.union{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
-.star{color:var(--gold)}
-.chips{display:inline-flex;gap:4px}
-.chip{display:inline-grid;place-items:center;min-width:26px;height:22px;padding:0 5px;border-radius:5px;font-size:12px;font-weight:900;background:var(--panel2);border:1px solid var(--line)}
-.chip.s6{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
-.chip.s5,.chip.s4{color:var(--fg)}
-.chip.low{color:var(--warn)}
-.chip.miss{color:var(--bad);border-color:var(--bad-soft);background:var(--bad-soft)}
-.chip.na{color:var(--muted);opacity:.5}
-.bar{display:inline-block;vertical-align:middle;width:56px;height:6px;border-radius:3px;background:var(--line);margin-left:8px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--emer)}
-.pill{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:999px}
-.pill.ok{background:var(--ok-soft);color:var(--ok)}
-.pill.warn{background:var(--warn-soft);color:var(--warn)}
-.pill.bad{background:var(--bad-soft);color:var(--bad)}
-.pill.off{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
-.note{font-size:13px;color:var(--muted);margin:0;max-width:70ch}
-/* histórico */
-.wars{display:flex;flex-direction:column;gap:12px}
-.war{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.war summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px}
-.war summary::-webkit-details-marker{display:none}
-.war summary:focus-visible{outline:2px solid var(--emer);outline-offset:-2px}
-.wnum{display:grid;place-items:center;width:52px;height:52px;border-radius:12px;background:var(--gold-soft);border:1px solid var(--gold);font-family:var(--display);color:var(--gold);line-height:1;text-align:center}
-.wnum small{display:block;font-family:var(--body);font-size:9px;font-weight:900;letter-spacing:.1em}
-.wnum b{font-size:22px;font-weight:400}
-.wmeta{min-width:0;display:flex;flex-direction:column;gap:3px}
-.wopp{font-weight:900;font-size:17px;overflow-wrap:anywhere}
-.wopp span{color:var(--muted);font-weight:600;font-size:13px}
-.wtags{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--muted)}
-.wtags b{color:var(--fg)}
-.wright{text-align:right;display:flex;flex-direction:column;align-items:end;gap:4px}
-.wscore{font-family:var(--display);font-size:24px;color:var(--gold);line-height:1}
-.chev{font-size:12px;color:var(--muted);font-weight:800}
-.war[open] .chev::after{content:" ▲"} .war:not([open]) .chev::after{content:" ▼"}
-@media (max-width:560px){.war summary{grid-template-columns:auto 1fr}.wright{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}}
-.wbody{border-top:1px solid var(--line);padding:14px 18px 18px;display:flex;flex-direction:column;gap:14px}
-.hl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-@media (max-width:640px){.hl{grid-template-columns:1fr}}
-.hlbox{background:var(--panel2);border-radius:10px;padding:10px 12px;min-width:0}
-.hlbox h4{margin:0 0 4px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.hlbox p{margin:0;font-size:14px;font-weight:700;overflow-wrap:anywhere}
-.wbody table{min-width:520px}
-.wbody .tbl{border-radius:10px}
-.empty{background:var(--panel);border:1px dashed var(--line);border-radius:14px;padding:32px 20px;text-align:center;color:var(--muted)}
-.empty strong{display:block;color:var(--fg);font-size:17px;margin-bottom:4px}
-.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-@media (max-width:760px){.cols{grid-template-columns:1fr}}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0;display:flex;flex-direction:column;gap:10px}
-.box h3{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
-.box ol,.box ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
-.box li{display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
-.box li span:last-child{font-weight:800;white-space:nowrap}
-.medal{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800;background:var(--gold-soft);color:var(--gold);margin-right:6px}
-footer{color:var(--muted);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:18px}
-</style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--body);overflow-x:hidden}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--emer);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,44px);line-height:1;margin:0;letter-spacing:.3px}
+.kick{font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.sub{color:var(--muted);margin:6px 0 0;max-width:60ch}
+section{padding:72px 0}
+.head{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
 
-<div class="wrap">
-  <header class="hero">
-    <svg class="crest" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tropa de Elite">
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(11,9,6,.86);backdrop-filter:blur(10px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:20px;text-decoration:none}
+.brand svg{width:30px;height:30px}
+.links{display:flex;gap:4px}
+.links a{text-decoration:none;font-weight:800;font-size:14px;color:var(--muted);padding:8px 12px;border-radius:999px}
+.links a:hover,.links a.on{color:var(--fg);background:var(--panel2)}
+@media (max-width:720px){.links a:not(.cta){display:none}}
+.links a.cta{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#15120e}
+
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;padding:96px 0 64px;overflow:hidden;
+  background:radial-gradient(900px 600px at 50% 38%,#3a2b0e 0%,transparent 65%),linear-gradient(180deg,#0b0906,#0e0c08 70%,var(--bg))}
+#sparks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-in{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.crest-wrap{width:min(300px,62vw);aspect-ratio:1;perspective:900px;margin-bottom:8px}
+.crest{width:100%;height:100%;transform-style:preserve-3d;transition:transform .15s ease-out;
+  filter:drop-shadow(0 20px 50px rgba(232,181,62,.4));animation:float 6s ease-in-out infinite}
+.crest-wrap.in .crest{animation:drop .9s cubic-bezier(.2,1.4,.4,1) both,float 6s ease-in-out .9s infinite}
+@keyframes drop{from{opacity:0;transform:translateY(-60px) scale(.7) rotate(-8deg)}to{opacity:1;transform:none}}
+@keyframes float{50%{translate:0 -10px}}
+.crest .eye{animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{opacity:.35}}
+.crest .shine{animation:sweep 5s ease-in-out 1.2s infinite}
+@keyframes sweep{0%,70%{transform:translateX(-520px)}100%{transform:translateX(520px)}}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,11vw,104px);line-height:.9;margin:0;letter-spacing:1px}
+.hero h1 span{background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,#a8741a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:6px 0 18px;color:var(--muted);font-size:clamp(16px,2.4vw,19px);max-width:46ch}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;padding:13px 22px;border-radius:999px;border:1px solid var(--line);background:var(--panel);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#15120e;border:0;box-shadow:0 8px 30px rgba(232,181,62,.3)}
+.scroll{position:absolute;bottom:22px;left:50%;translate:-50% 0;font-size:12px;color:var(--muted);letter-spacing:.14em;font-weight:800;animation:bob 2s infinite}
+@keyframes bob{50%{translate:-50% 6px}}
+
+/* contadores */
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:-40px;position:relative;z-index:2}
+@media (max-width:760px){.counters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ct{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:2px}
+.ct b{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,46px);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.ct small{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ct em{font-style:normal;font-size:12px;color:var(--muted)}
+
+/* revelar ao rolar */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+
+/* pódio */
+.podium{display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:end;gap:14px;max-width:820px;margin:0 auto}
+.pd{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.pd .who{display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;transform:translateY(16px);transition:.6s}
+.pd .medal{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:24px;color:#15120e;background:var(--c);box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--c)}
+.pd .nm{font-weight:900;font-size:18px;overflow-wrap:anywhere}
+.pd .st{font-family:var(--display);font-size:28px;color:var(--gold)}
+.pd .st small{font-size:.6em}
+.pd .ped{width:100%;height:0;border-radius:14px 14px 4px 4px;background:linear-gradient(180deg,var(--c),transparent 140%);transition:height 1s cubic-bezier(.2,1,.3,1);display:grid;place-items:start center;padding-top:12px;font-family:var(--display);font-size:42px;color:rgba(0,0,0,.35);overflow:hidden}
+.pd.p1{--c:var(--gold)} .pd.p2{--c:var(--silver)} .pd.p3{--c:var(--bronze)}
+.podium.go .who{opacity:1;transform:none}
+.podium.go .p1 .ped{height:210px}.podium.go .p2 .ped{height:150px}.podium.go .p3 .ped{height:110px}
+.podium.go .p2 .who{transition-delay:.3s}.podium.go .p3 .who{transition-delay:.5s}.podium.go .p1 .who{transition-delay:.8s}
+.pd .det{font-size:12px;color:var(--muted)}
+@media (max-width:560px){.pd .nm{font-size:14px}.pd .st{font-size:22px}.podium.go .p1 .ped{height:150px}.podium.go .p2 .ped{height:105px}.podium.go .p3 .ped{height:75px}.pd .medal{width:42px;height:42px;font-size:19px}}
+
+/* ranking */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.search{flex:1 1 220px;display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.search input{flex:1;background:none;border:0;padding:11px 0;outline:none;min-width:0}
+.seg{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:7px 12px;border-radius:8px;font-weight:800;font-size:13px;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--panel2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--gold)}
+.list{display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 14px;cursor:pointer;transition:border-color .2s,transform .2s}
+.row:hover{border-color:#4a3f2d;transform:translateX(3px)}
+.row .rk{font-family:var(--display);font-size:22px;color:var(--muted);text-align:center}
+.row.top .rk{color:var(--gold)}
+.row .nm{font-weight:900;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere}
+.row .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+.row .sc{text-align:right}
+.row .sc b{font-family:var(--display);font-weight:400;font-size:26px;color:var(--gold);line-height:1}
+.row .sc small{display:block;font-size:11px;color:var(--muted)}
+.tag{flex:none;font-size:10px;font-weight:900;letter-spacing:.08em;padding:2px 7px;border-radius:4px}
+.tag.liga{background:var(--emer-soft);color:var(--emer)}
+.tag.union{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
+.tag.miss{background:var(--bad-soft);color:var(--bad)}
+.row>div{min-width:0}
+.prog{height:5px;border-radius:3px;background:var(--line);overflow:hidden;margin-top:6px;max-width:260px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width .8s}
+.cutline{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:6px 0}
+.cutline::before,.cutline::after{content:"";flex:1;border-top:2px dashed var(--gold)}
+.detail{grid-column:1/-1;display:none;gap:10px;border-top:1px solid var(--line);padding-top:10px;margin-top:4px}
+.row.open .detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.wbox{background:var(--panel2);border-radius:10px;padding:8px 10px;font-size:13px}
+.wbox h4{margin:0 0 2px;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.stars{color:var(--gold);letter-spacing:2px}
+.stars .off{color:#3d3527}
+.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+
+/* guerras */
+.wars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.war{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.war .n{position:absolute;right:-6px;top:-18px;font-family:var(--display);font-size:110px;color:var(--gold);opacity:.08;line-height:1}
+.war h3{margin:0;font-size:18px;overflow-wrap:anywhere}
+.war .d{font-size:12px;color:var(--muted)}
+.war .kp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.war .kp div{background:var(--panel2);border-radius:10px;padding:8px;text-align:center}
+.war .kp b{display:block;font-family:var(--display);font-size:22px;font-weight:400}
+.war .kp small{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+.war p{margin:0;font-size:13px;color:var(--muted)} .war p b{color:var(--fg)}
+
+/* liga */
+.liga{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.box h3{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.box ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.box li{display:flex;justify-content:space-between;gap:8px}
+.box li span:last-child{font-weight:900;white-space:nowrap}
+
+/* como entrar */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;counter-reset:s}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 18px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--gold-soft);border:1px solid var(--gold);color:var(--gold);font-family:var(--display);font-size:20px;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:17px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+.rules{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.rule{display:flex;gap:10px;align-items:flex-start;background:var(--panel2);border-radius:12px;padding:12px 14px;font-size:14px}
+.rule i{font-style:normal;color:var(--emer);font-weight:900}
+.join{margin-top:26px;text-align:center;background:radial-gradient(500px 200px at 50% 0,#3a2b0e,transparent),var(--panel);border:1px solid var(--gold);border-radius:20px;padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.join h3{font-family:var(--display);font-weight:400;font-size:30px;margin:0}
+
+
+.tagcla{margin-top:14px;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.tagcla b{color:var(--fg);letter-spacing:.06em}
+.tagcla button{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:4px 10px;font-weight:800;font-size:12px;cursor:pointer}
+.perks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.perks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.perks{grid-template-columns:1fr}}
+.perk{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;transition:transform .25s,border-color .25s}
+.perk:hover{transform:translateY(-4px);border-color:#5a4a2a}
+.perk .ico{font-size:30px;margin-bottom:10px}
+.perk h3{margin:0 0 6px;font-size:18px}
+.perk p{margin:0;color:var(--muted);font-size:14px}
+.perk.big{grid-column:span 2;position:relative;overflow:hidden;border-color:var(--gold);
+  background:radial-gradient(420px 220px at 85% 20%,rgba(246,215,122,.25),transparent 70%),linear-gradient(135deg,#2a2010,var(--panel) 70%)}
+@media (max-width:560px){.perk.big{grid-column:auto}}
+.perk.big h3{font-family:var(--display);font-weight:400;font-size:clamp(24px,4vw,32px);color:var(--gold2)}
+.ticket{width:110px;height:auto;filter:drop-shadow(0 6px 16px rgba(232,181,62,.45))}
+.sorteio .ticket{width:140px}
+.perk.big .ico{font-size:44px;display:inline-block;animation:ticket 3.5s ease-in-out infinite}
+@keyframes ticket{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg) translateY(-4px)}}
+.perk.big::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);animation:brilho 4s ease-in-out infinite}
+@keyframes brilho{60%,100%{transform:translateX(100%)}}
+.proof{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.proof span{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted)}
+.proof b{color:var(--gold)}
+.phead{padding:96px 0 0;background:radial-gradient(800px 300px at 50% 0,#3a2b0e,transparent 70%)}
+.phead h2{margin:6px 0 14px}
+.subnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.subnav a{text-decoration:none;font-weight:800;font-size:13px;padding:7px 13px;border-radius:999px;background:var(--panel);border:1px solid var(--line)}
+.phead .counters{margin-top:0}
+.sorteio .ticket{animation:ticket 3.5s ease-in-out infinite}
+.sorteio{text-align:center;padding:30px 18px;border-radius:18px;border:1px dashed var(--gold);background:linear-gradient(135deg,#2a2010,var(--panel) 70%)}
+.sorteio .big{font-family:var(--display);font-size:clamp(28px,6vw,44px);color:var(--gold2)}
+.sorteio p{color:var(--muted);margin:6px 0 0}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:12px;text-align:center}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.pd .who{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap">
+  <a class="brand" href="#inicio"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tropa de Elite">
   <defs>
     <linearGradient id="ouro" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#f6d77a"/><stop offset=".55" stop-color="#e0ac34"/><stop offset="1" stop-color="#a8741a"/>
@@ -193,177 +258,304 @@ footer{color:var(--muted);font-size:12px;text-align:center;border-top:1px solid 
   <path d="M256 50 L266 66 L256 80 L246 66 Z" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
   <path d="M256 166 L274 192 L256 218 L238 192 Z" fill="url(#esmeralda)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
   <circle cx="200" cy="192" r="6" fill="#6e4a0e"/><circle cx="312" cy="192" r="6" fill="#6e4a0e"/>
-</svg>
-    <div>
-      <div class="eyebrow">Temporada de outubro · 2026</div>
-      <h1>Tropa de <span>Elite</span></h1>
-      <div class="upd" id="upd"></div>
-    </div>
-  </header>
+</svg> Tropa de Elite</a>
+  <div class="links"><a href="#inicio" data-v="inicio">Início</a><a href="#painel" data-v="painel">Painel</a><a class="cta" href="https://link.clashofclans.com/pt?action=OpenClanProfile&amp;tag=PJP9CJY9" target="_blank" rel="noopener">Entrar no clã</a></div>
+</div></nav>
 
-  <div class="tabs" role="tablist">
-    <button role="tab" id="tab-guerras" aria-selected="true" data-v="guerras">Guerras do mês</button>
-    <button role="tab" id="tab-liga" aria-selected="false" data-v="liga">Última liga</button>
+<main id="v-inicio">
+<header class="hero" id="topo">
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <div class="hero-in wrap">
+    <div class="crest-wrap" id="crest"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tropa de Elite">
+  <defs>
+    <linearGradient id="ouro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d77a"/><stop offset=".55" stop-color="#e0ac34"/><stop offset="1" stop-color="#a8741a"/>
+    </linearGradient>
+    <linearGradient id="osso" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e9d2"/><stop offset="1" stop-color="#cdbb93"/>
+    </linearGradient>
+    <linearGradient id="esmeralda" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ef0b8"/><stop offset=".5" stop-color="#1fa36b"/><stop offset="1" stop-color="#0b5a3a"/>
+    </linearGradient>
+  </defs>
+  <!-- escudo -->
+  <path d="M256 18 L458 78 V248 C458 372 370 452 256 494 C142 452 54 372 54 248 V78 Z" fill="#15120e" stroke="url(#ouro)" stroke-width="12"/>
+  <path d="M256 44 L434 96 V250 C434 358 358 428 256 466 C154 428 78 358 78 250 V96 Z" fill="none" stroke="#e0ac34" stroke-opacity=".35" stroke-width="3"/>
+  <!-- caveira -->
+  <path d="M176 196 H336 C354 240 352 292 328 316 L320 344 H192 L184 316 C160 292 158 240 176 196 Z" fill="url(#osso)"/>
+  <path d="M198 258 L248 270 C250 296 234 308 214 304 C198 300 192 280 198 258 Z" fill="#15120e"/>
+  <path d="M314 258 L264 270 C262 296 278 308 298 304 C314 300 320 280 314 258 Z" fill="#15120e"/>
+  <circle cx="226" cy="284" r="5" fill="#3ee09a"/>
+  <circle cx="286" cy="284" r="5" fill="#3ee09a"/>
+  <path d="M256 300 L244 328 H268 Z" fill="#15120e"/>
+  <path d="M200 342 H312 L302 386 C282 400 230 400 210 386 Z" fill="#15120e"/>
+  <rect x="209" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="225" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="241" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="257" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="273" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="289" y="344" width="14" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="215" y="366" width="13" height="15" rx="4" fill="url(#osso)"/>
+  <rect x="230" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="245" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="260" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="275" y="366" width="13" height="19" rx="4" fill="url(#osso)"/>
+  <rect x="290" y="366" width="13" height="15" rx="4" fill="url(#osso)"/>
+  <path d="M184 316 C200 326 210 326 222 318" fill="none" stroke="#15120e" stroke-opacity=".25" stroke-width="5" stroke-linecap="round"/>
+  <path d="M328 316 C312 326 302 326 290 318" fill="none" stroke="#15120e" stroke-opacity=".25" stroke-width="5" stroke-linecap="round"/>
+  <rect x="170" y="206" width="172" height="12" fill="#15120e" opacity=".22"/>
+  <!-- coroa -->
+  <path d="M160 200 L166 104 L212 146 L256 70 L300 146 L346 104 L352 200 Z" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="152" y="176" width="208" height="32" rx="6" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <circle cx="166" cy="98" r="11" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <circle cx="346" cy="98" r="11" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4"/>
+  <path d="M256 50 L266 66 L256 80 L246 66 Z" fill="url(#ouro)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M256 166 L274 192 L256 218 L238 192 Z" fill="url(#esmeralda)" stroke="#6e4a0e" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="200" cy="192" r="6" fill="#6e4a0e"/><circle cx="312" cy="192" r="6" fill="#6e4a0e"/>
+</svg></div>
+    <div class="kick">Clash of Clans · Recrutamento aberto</div>
+    <h1>Tropa de <span>Elite</span></h1>
+    <p>Clã organizado, guerra o mês inteiro e Liga com sorteio do <b style="color:var(--gold2)">bilhete dourado</b>. Falta só você.</p>
+    <div class="btns"><a class="btn gold" href="https://link.clashofclans.com/pt?action=OpenClanProfile&amp;tag=PJP9CJY9" target="_blank" rel="noopener">⚔️ Entrar no clã</a><a class="btn" href="#painel">Ver o painel</a></div>
+    <div class="tagcla">Tag do clã <b>#PJP9CJY9</b> <button id="copiar" type="button">Copiar</button></div>
   </div>
+  <div class="scroll">ROLE ▾</div>
+</header>
 
-  <div id="view-guerras"></div>
-  <div id="view-liga" hidden></div>
+<section id="vantagens"><div class="wrap">
+  <div class="head rv"><span class="kick">Por que a Tropa</span><h2>Aqui o clã funciona</h2><p class="sub">Regras claras, ranking aberto e prêmio pra quem joga sério.</p></div>
+  <div class="perks">
+    <div class="perk big rv"><div class="ico"><svg class="ticket" viewBox="0 0 120 64" aria-hidden="true"><defs><linearGradient id="tk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#e8b53e"/><stop offset="1" stop-color="#a8741a"/></linearGradient></defs><path d="M6 4h108a2 2 0 0 1 2 2v16a10 10 0 0 0 0 20v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V42a10 10 0 0 0 0-20V6a2 2 0 0 1 2-2z" fill="url(#tk)" stroke="#6e4a0e" stroke-width="2"/><path d="M84 8v48" stroke="#6e4a0e" stroke-width="2" stroke-dasharray="4 4"/><text x="44" y="30" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="13" fill="#4a3008">BILHETE</text><text x="44" y="46" text-anchor="middle" font-family="Lilita One,sans-serif" font-size="13" fill="#4a3008">DOURADO</text><text x="100" y="38" text-anchor="middle" font-size="16" fill="#4a3008">★</text></svg></div><h3>Liga com sorteio do bilhete dourado</h3><p>Quem joga a Liga com a gente concorre ao sorteio do bilhete dourado. Jogou, atacou, participa.</p></div>
+    <div class="perk rv"><div class="ico">📋</div><h3>Clã organizado</h3><p>Ranking transparente, critério de vaga conhecido por todos e resultado publicado aqui.</p></div>
+    <div class="perk rv"><div class="ico">💬</div><h3>WhatsApp obrigatório</h3><p>Avisos de guerra, escalação e Liga num lugar só. Ninguém fica perdido.</p></div>
+    <div class="perk rv"><div class="ico">⚔️</div><h3>Guerra o mês inteiro</h3><p>Guerras seguidas, 2 ataques por guerra. Cada estrela conta pro seu ranking.</p></div>
+    <div class="perk rv"><div class="ico">🏆</div><h3>Vaga na Liga por mérito</h3><p>Os 15 melhores das guerras do mês jogam a Liga na Tropa. Sem panelinha.</p></div>
+    <div class="perk rv"><div class="ico">🤝</div><h3>Todo mundo joga Liga</h3><p>Quem fica de fora do top 15 joga a Liga no clã Union. Ninguém fica parado.</p></div>
+  </div>
+  <div class="proof rv" id="proof"></div>
+</div></section>
 
-  <footer>Os 15 melhores das guerras do mês vão para a Liga. Os demais jogam a Liga no Union.</footer>
-</div>
+<section id="entrar"><div class="wrap">
+  <div class="head rv"><span class="kick">Como entrar</span><h2>4 passos e você está dentro</h2></div>
+  <div class="steps">
+    <div class="step rv"><h3>Toque em “Entrar no clã”</h3><p>O link abre o perfil do clã direto no Clash of Clans.</p></div>
+    <div class="step rv"><h3>Peça para entrar</h3><p>Envie a solicitação com seu nick. Ou busque pela tag #PJP9CJY9.</p></div>
+    <div class="step rv"><h3>Entre no WhatsApp</h3><p>Obrigatório. Peça o link do grupo para a liderança assim que for aceito.</p></div>
+    <div class="step rv"><h3>Ataque e suba no ranking</h3><p>Use seus 2 ataques em toda guerra e garanta sua vaga na Liga.</p></div>
+  </div>
+  <div class="rules rv">
+    <div class="rule"><i>✓</i><span>Usar os 2 ataques em toda guerra em que for escalado.</span></div>
+    <div class="rule"><i>✓</i><span>Atacar cedo: novas estrelas desempatam o ranking.</span></div>
+    <div class="rule"><i>✓</i><span>Estar no grupo do WhatsApp e acompanhar os avisos.</span></div>
+  </div>
+  <div class="join rv"><h3>Bora pra guerra?</h3><p class="sub" style="margin:0">Toque no botão, peça para entrar e chame a gente no WhatsApp.</p><a class="btn gold" href="https://link.clashofclans.com/pt?action=OpenClanProfile&amp;tag=PJP9CJY9" target="_blank" rel="noopener">⚔️ Entrar no clã</a></div>
+</div></section>
+</main>
+
+<main id="v-painel" hidden>
+<div class="phead"><div class="wrap">
+  <span class="kick" id="temporada"></span><h2>Painel da Tropa</h2>
+  <div class="subnav"><a href="#painel/ranking">Ranking</a><a href="#painel/sorteio">Sorteio</a><a href="#painel/guerras">Guerras</a><a href="#painel/liga">Última Liga</a></div>
+  <div class="counters" id="counters"></div>
+</div></div>
+
+<section id="podio"><div class="wrap">
+  <div class="head rv"><span class="kick">Pódio do mês</span><h2>Quem está no topo</h2><p class="sub">Estrelas reais somadas nas guerras do mês. Empate: novas estrelas, depois destruição.</p></div>
+  <div class="podium" id="podium"></div>
+</div></section>
+<section id="ranking"><div class="wrap">
+  <div class="head rv"><span class="kick">Ranking para a Liga</span><h2>Corrida pelas 15 vagas</h2><p class="sub">Toque em um jogador para ver guerra por guerra.</p></div>
+  <div class="tools rv">
+    <label class="search"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Buscar jogador" aria-label="Buscar jogador"></label>
+    <div class="seg" id="fZona" role="group" aria-label="Filtrar">
+      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Union</button><button data-f="falta">Perderam ataque</button>
+    </div>
+    <div class="seg" id="fOrd" role="group" aria-label="Ordenar">
+      <button data-o="rank" aria-pressed="true">Estrelas</button><button data-o="novas">Novas</button><button data-o="media">Destruição</button>
+    </div>
+  </div>
+  <div class="list" id="list"></div>
+</div></section>
+
+<section id="guerras"><div class="wrap">
+  <div class="head rv"><span class="kick">Histórico</span><h2>Guerras do mês</h2></div>
+  <div class="wars" id="wars"></div>
+</div></section>
+
+<section id="sorteio"><div class="wrap">
+  <div class="head rv"><span class="kick">Bilhete dourado</span><h2>Resultado do sorteio</h2></div>
+  <div id="sorteioBox"></div>
+</div></section>
+
+<section id="liga"><div class="wrap">
+  <div class="head rv"><span class="kick">Última Liga de Clãs</span><h2>Resultado da Liga</h2><p class="sub" id="ligaSub"></p></div>
+  <div class="liga" id="ligaBox"></div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap" id="upd"></div></footer>
 
 <script>
-const DATA = {"liga": [{"posicao": "1", "jogador": "well2.0", "estrelas": "21", "destruicao_total_pct": "700", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "100.0"}, {"posicao": "2", "jogador": "Matheus$$$", "estrelas": "20", "destruicao_total_pct": "699", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.9"}, {"posicao": "3", "jogador": "Marko", "estrelas": "20", "destruicao_total_pct": "698", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.7"}, {"posicao": "4", "jogador": "Wallace", "estrelas": "20", "destruicao_total_pct": "694", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.1"}, {"posicao": "4", "jogador": "Matheus PH", "estrelas": "20", "destruicao_total_pct": "694", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.1"}, {"posicao": "6", "jogador": "ludexNox", "estrelas": "20", "destruicao_total_pct": "693", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.0"}, {"posicao": "7", "jogador": "HOMEM DE FERRO2", "estrelas": "20", "destruicao_total_pct": "690", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.6"}, {"posicao": "8", "jogador": "Jefferson", "estrelas": "20", "destruicao_total_pct": "687", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.1"}, {"posicao": "9", "jogador": "Felipe Santos", "estrelas": "19", "destruicao_total_pct": "692", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.9"}, {"posicao": "10", "jogador": "Monica", "estrelas": "19", "destruicao_total_pct": "691", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.7"}, {"posicao": "11", "jogador": "Weeto01", "estrelas": "19", "destruicao_total_pct": "684", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.7"}, {"posicao": "12", "jogador": "LeaL", "estrelas": "19", "destruicao_total_pct": "680", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.1"}, {"posicao": "13", "jogador": "well", "estrelas": "19", "destruicao_total_pct": "679", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.0"}, {"posicao": "13", "jogador": "Azumy", "estrelas": "19", "destruicao_total_pct": "679", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.0"}, {"posicao": "15", "jogador": "Robson Alves", "estrelas": "19", "destruicao_total_pct": "677", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "96.7"}, {"posicao": "16", "jogador": "FumeKnight", "estrelas": "18", "destruicao_total_pct": "671", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "95.9"}, {"posicao": "17", "jogador": "HOMEM DE FERRO", "estrelas": "18", "destruicao_total_pct": "668", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "95.4"}, {"posicao": "18", "jogador": "danielstbr", "estrelas": "18", "destruicao_total_pct": "652", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.1"}, {"posicao": "19", "jogador": "Player One YT", "estrelas": "18", "destruicao_total_pct": "651", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.0"}, {"posicao": "20", "jogador": "CMD Samuel", "estrelas": "18", "destruicao_total_pct": "613", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "87.6"}, {"posicao": "21", "jogador": "gustavo p.", "estrelas": "17", "destruicao_total_pct": "686", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.0"}, {"posicao": "22", "jogador": "Siegfried", "estrelas": "17", "destruicao_total_pct": "645", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "92.1"}, {"posicao": "23", "jogador": "Fernando", "estrelas": "17", "destruicao_total_pct": "616", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "88.0"}, {"posicao": "24", "jogador": "Dudu", "estrelas": "16", "destruicao_total_pct": "561", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "93.5"}, {"posicao": "25", "jogador": "Hades", "estrelas": "15", "destruicao_total_pct": "651", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.0"}, {"posicao": "26", "jogador": "snooW Jonatan", "estrelas": "14", "destruicao_total_pct": "526", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "87.7"}, {"posicao": "27", "jogador": "droppz", "estrelas": "14", "destruicao_total_pct": "468", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "66.9"}, {"posicao": "28", "jogador": "XvKiravX", "estrelas": "13", "destruicao_total_pct": "479", "ataques_feitos": "5", "ataques_disponiveis": "5", "ataques_nao_usados": "0", "destruicao_media_pct": "95.8"}, {"posicao": "29", "jogador": "frank_castle", "estrelas": "11", "destruicao_total_pct": "457", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "76.2"}, {"posicao": "30", "jogador": "~KALEBE", "estrelas": "10", "destruicao_total_pct": "439", "ataques_feitos": "5", "ataques_disponiveis": "7", "ataques_nao_usados": "2", "destruicao_media_pct": "87.8"}, {"posicao": "31", "jogador": "Shevchenko", "estrelas": "0", "destruicao_total_pct": "0", "ataques_feitos": "0", "ataques_disponiveis": "2", "ataques_nao_usados": "2", "destruicao_media_pct": "0.0"}, {"posicao": "31", "jogador": "LAMPIÃO (BR)", "estrelas": "0", "destruicao_total_pct": "0", "ataques_feitos": "0", "ataques_disponiveis": "0", "ataques_nao_usados": "0", "destruicao_media_pct": ""}], "guerras": [{"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "HOMEM DE FERRO", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Weeto01", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "well", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "frank_castle", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "3", "destruicao_pct": "176", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Jefferson", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Wallace", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "1", "destruicao_pct": "180", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Felipe Santos", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "4", "destruicao_pct": "189", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "ludexNox", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "2", "destruicao_pct": "197", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "HOMEM DE FERRO2", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "FumeKnight", "ataques_feitos": "0", "ataques_disponiveis": "2", "estrelas": "0", "novas_estrelas": "0", "destruicao_pct": "0", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Siegfried", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "2", "destruicao_pct": "156", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Player One YT", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "2", "destruicao_pct": "180", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Robson Alves", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "199", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Matheus$$$", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "danielstbr", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "0", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Hades", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "3", "destruicao_pct": "181", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Marko", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "CMD Samuel", "ataques_feitos": "0", "ataques_disponiveis": "2", "estrelas": "0", "novas_estrelas": "0", "destruicao_pct": "0", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Monica", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "3", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "well2.0", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "1", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "HOMEM DE FERRO", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "5", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Weeto01", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "well", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "0", "destruicao_pct": "179", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Jefferson", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "0", "destruicao_pct": "122", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Wallace", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Felipe Santos", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "5", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "FumeKnight", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "4", "destruicao_pct": "191", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "HOMEM DE FERRO2", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "199", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Player One YT", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Siegfried", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "0", "destruicao_pct": "185", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Robson Alves", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "179", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "danielstbr", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Matheus$$$", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "3", "destruicao_pct": "172", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Hades", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "2", "novas_estrelas": "0", "destruicao_pct": "177", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Marko", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "193", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "XvKiravX", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "4", "destruicao_pct": "177", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "CMD Samuel", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "1", "destruicao_pct": "170", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Matheus PH", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "2", "destruicao_pct": "102", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Dudu", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "1", "destruicao_pct": "144", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "well2.0", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}], "atualizado": "16/10/2026 17:02"};
+const DATA = {"liga": [{"posicao": "1", "jogador": "well2.0", "estrelas": "21", "destruicao_total_pct": "700", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "100.0"}, {"posicao": "2", "jogador": "Matheus$$$", "estrelas": "20", "destruicao_total_pct": "699", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.9"}, {"posicao": "3", "jogador": "Marko", "estrelas": "20", "destruicao_total_pct": "698", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.7"}, {"posicao": "4", "jogador": "Wallace", "estrelas": "20", "destruicao_total_pct": "694", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.1"}, {"posicao": "4", "jogador": "Matheus PH", "estrelas": "20", "destruicao_total_pct": "694", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.1"}, {"posicao": "6", "jogador": "ludexNox", "estrelas": "20", "destruicao_total_pct": "693", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "99.0"}, {"posicao": "7", "jogador": "HOMEM DE FERRO2", "estrelas": "20", "destruicao_total_pct": "690", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.6"}, {"posicao": "8", "jogador": "Jefferson", "estrelas": "20", "destruicao_total_pct": "687", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.1"}, {"posicao": "9", "jogador": "Felipe Santos", "estrelas": "19", "destruicao_total_pct": "692", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.9"}, {"posicao": "10", "jogador": "Monica", "estrelas": "19", "destruicao_total_pct": "691", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.7"}, {"posicao": "11", "jogador": "Weeto01", "estrelas": "19", "destruicao_total_pct": "684", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.7"}, {"posicao": "12", "jogador": "LeaL", "estrelas": "19", "destruicao_total_pct": "680", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.1"}, {"posicao": "13", "jogador": "well", "estrelas": "19", "destruicao_total_pct": "679", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.0"}, {"posicao": "13", "jogador": "Azumy", "estrelas": "19", "destruicao_total_pct": "679", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "97.0"}, {"posicao": "15", "jogador": "Robson Alves", "estrelas": "19", "destruicao_total_pct": "677", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "96.7"}, {"posicao": "16", "jogador": "FumeKnight", "estrelas": "18", "destruicao_total_pct": "671", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "95.9"}, {"posicao": "17", "jogador": "HOMEM DE FERRO", "estrelas": "18", "destruicao_total_pct": "668", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "95.4"}, {"posicao": "18", "jogador": "danielstbr", "estrelas": "18", "destruicao_total_pct": "652", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.1"}, {"posicao": "19", "jogador": "Player One YT", "estrelas": "18", "destruicao_total_pct": "651", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.0"}, {"posicao": "20", "jogador": "CMD Samuel", "estrelas": "18", "destruicao_total_pct": "613", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "87.6"}, {"posicao": "21", "jogador": "gustavo p.", "estrelas": "17", "destruicao_total_pct": "686", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "98.0"}, {"posicao": "22", "jogador": "Siegfried", "estrelas": "17", "destruicao_total_pct": "645", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "92.1"}, {"posicao": "23", "jogador": "Fernando", "estrelas": "17", "destruicao_total_pct": "616", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "88.0"}, {"posicao": "24", "jogador": "Dudu", "estrelas": "16", "destruicao_total_pct": "561", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "93.5"}, {"posicao": "25", "jogador": "Hades", "estrelas": "15", "destruicao_total_pct": "651", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "93.0"}, {"posicao": "26", "jogador": "snooW Jonatan", "estrelas": "14", "destruicao_total_pct": "526", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "87.7"}, {"posicao": "27", "jogador": "droppz", "estrelas": "14", "destruicao_total_pct": "468", "ataques_feitos": "7", "ataques_disponiveis": "7", "ataques_nao_usados": "0", "destruicao_media_pct": "66.9"}, {"posicao": "28", "jogador": "XvKiravX", "estrelas": "13", "destruicao_total_pct": "479", "ataques_feitos": "5", "ataques_disponiveis": "5", "ataques_nao_usados": "0", "destruicao_media_pct": "95.8"}, {"posicao": "29", "jogador": "frank_castle", "estrelas": "11", "destruicao_total_pct": "457", "ataques_feitos": "6", "ataques_disponiveis": "7", "ataques_nao_usados": "1", "destruicao_media_pct": "76.2"}, {"posicao": "30", "jogador": "~KALEBE", "estrelas": "10", "destruicao_total_pct": "439", "ataques_feitos": "5", "ataques_disponiveis": "7", "ataques_nao_usados": "2", "destruicao_media_pct": "87.8"}, {"posicao": "31", "jogador": "Shevchenko", "estrelas": "0", "destruicao_total_pct": "0", "ataques_feitos": "0", "ataques_disponiveis": "2", "ataques_nao_usados": "2", "destruicao_media_pct": "0.0"}, {"posicao": "31", "jogador": "LAMPIÃO (BR)", "estrelas": "0", "destruicao_total_pct": "0", "ataques_feitos": "0", "ataques_disponiveis": "0", "ataques_nao_usados": "0", "destruicao_media_pct": ""}], "guerras": [{"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "HOMEM DE FERRO", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Weeto01", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "well", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "frank_castle", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "3", "destruicao_pct": "176", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Jefferson", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Wallace", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "1", "destruicao_pct": "180", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Felipe Santos", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "4", "destruicao_pct": "189", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "ludexNox", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "2", "destruicao_pct": "197", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "HOMEM DE FERRO2", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "FumeKnight", "ataques_feitos": "0", "ataques_disponiveis": "2", "estrelas": "0", "novas_estrelas": "0", "destruicao_pct": "0", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Siegfried", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "2", "destruicao_pct": "156", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Player One YT", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "2", "destruicao_pct": "180", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Robson Alves", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "199", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Matheus$$$", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "danielstbr", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "0", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Hades", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "3", "destruicao_pct": "181", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Marko", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "CMD Samuel", "ataques_feitos": "0", "ataques_disponiveis": "2", "estrelas": "0", "novas_estrelas": "0", "destruicao_pct": "0", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "Monica", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "3", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-13", "tipo": "guerra", "guerra": "1", "adversario": "2DeRanged 2.0", "jogador": "well2.0", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "1", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "HOMEM DE FERRO", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "5", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Weeto01", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "4", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "well", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "0", "destruicao_pct": "179", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Jefferson", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "0", "destruicao_pct": "122", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Wallace", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Felipe Santos", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "5", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "FumeKnight", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "4", "destruicao_pct": "191", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "HOMEM DE FERRO2", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "199", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Player One YT", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Siegfried", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "0", "destruicao_pct": "185", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Robson Alves", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "179", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "danielstbr", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "2", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Matheus$$$", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "3", "destruicao_pct": "172", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Hades", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "2", "novas_estrelas": "0", "destruicao_pct": "177", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Marko", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "5", "novas_estrelas": "5", "destruicao_pct": "193", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "XvKiravX", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "4", "destruicao_pct": "177", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "CMD Samuel", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "1", "destruicao_pct": "170", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Matheus PH", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "4", "novas_estrelas": "2", "destruicao_pct": "102", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "Dudu", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "3", "novas_estrelas": "1", "destruicao_pct": "144", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}, {"data": "2026-10-15", "tipo": "guerra", "guerra": "2", "adversario": "~☆Eski Toprak☆~", "jogador": "well2.0", "ataques_feitos": "2", "ataques_disponiveis": "2", "estrelas": "6", "novas_estrelas": "6", "destruicao_pct": "200", "observacao": "estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques"}], "sorteio": [], "atualizado": "16/10/2026 17:13"};
 const CORTE = 15;
 const $ = s => document.querySelector(s);
 const num = v => v === '' || v == null ? null : Number(v);
-const fmt = (v, d=1) => v == null ? '–' : v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
-const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const dataBR = s => { const [y,m,d]=s.split('-'); return `${d}/${m}`; };
-$('#upd').textContent = 'Atualizado em ' + DATA.atualizado;
+const fmt = (v,d=1) => v==null?'–':v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dataBR = s => s.split('-').reverse().slice(0,2).join('/');
+const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
 
-function statusPill(feitos, disp){
-  if (disp === 0) return '<span class="pill off">Não escalado</span>';
-  const f = disp - feitos;
-  if (f === 0) return '<span class="pill ok">Todos</span>';
-  if (feitos === 0) return '<span class="pill bad">Não atacou</span>';
-  return `<span class="pill warn">Faltou ${f}</span>`;
-}
-function sortTable(el, rows, render, initial, cmp){
-  let key = initial;
-  const draw = () => {
-    const s = rows.slice().sort((a,b)=> key==='rank' ? cmp(a,b) : ((b[key]??-1)-(a[key]??-1) || cmp(a,b)));
-    el.querySelector('tbody').innerHTML = render(s, key);
-    el.querySelectorAll('.sort button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.k===key));
-  };
-  el.querySelector('.sort').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b){key=b.dataset.k;draw();} });
-  draw();
+/* ---- dados ---- */
+const g = DATA.guerras.map(r=>({...r,f:num(r.ataques_feitos)||0,d:num(r.ataques_disponiveis)||0,e:num(r.estrelas)||0,nv:num(r.novas_estrelas)||0,p:num(r.destruicao_pct)||0}));
+const ids = [...new Set(g.map(r=>r.guerra))].sort((a,b)=>a-b);
+const by = {};
+g.forEach(r=>{const p=by[r.jogador]??={nome:r.jogador,jogou:0,estrelas:0,novas:0,pct:0,feitos:0,disp:0,pg:{}};
+  p.jogou++;p.estrelas+=r.e;p.novas+=r.nv;p.pct+=r.p;p.feitos+=r.f;p.disp+=r.d;p.pg[r.guerra]=r;});
+const cmp=(a,b)=>b.estrelas-a.estrelas||b.novas-a.novas||b.pct-a.pct;
+const ranked=Object.values(by).map(p=>({...p,media:p.feitos?p.pct/p.feitos:null,perdidos:p.disp-p.feitos})).sort(cmp);
+ranked.forEach((r,i)=>r.pos=i+1);
+const maxE = Math.max(1,...ranked.map(r=>r.estrelas));
+const totF=g.reduce((s,r)=>s+r.f,0), totD=g.reduce((s,r)=>s+r.d,0), totE=g.reduce((s,r)=>s+r.e,0);
+const d0 = g[0]?.data || '';
+$('#temporada').textContent = d0 ? `Temporada de ${MESES[+d0.slice(5,7)-1]} · ${d0.slice(0,4)}` : 'Clash of Clans';
+$('#upd').textContent = `Tropa de Elite · Clash of Clans · Atualizado em ${DATA.atualizado}`;
+
+/* ---- nav ---- */
+const nav=$('#nav'); const onScroll=()=>nav.classList.toggle('solid',scrollY>40); addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+/* ---- brasão: entrada + inclinação com mouse/giroscópio ---- */
+const cw=$('#crest'), cs=cw.querySelector('svg'); cs.classList.add('crest');
+cs.querySelectorAll('circle[fill="#3ee09a"]').forEach(c=>c.classList.add('eye'));
+const NS='http://www.w3.org/2000/svg', shine=document.createElementNS(NS,'rect');
+Object.entries({x:-60,y:0,width:90,height:512,fill:'#fff',opacity:'.10',class:'shine',transform:'skewX(-20)'}).forEach(([k,v])=>shine.setAttribute(k,v));
+const clip=document.createElementNS(NS,'clipPath'); clip.id='escudoClip';
+const sp=cs.querySelector('path').cloneNode(); sp.removeAttribute('stroke'); clip.appendChild(sp);
+cs.querySelector('defs').appendChild(clip);
+const gsh=document.createElementNS(NS,'g'); gsh.setAttribute('clip-path','url(#escudoClip)'); gsh.appendChild(shine); cs.appendChild(gsh);
+requestAnimationFrame(()=>cw.classList.add('in'));
+if(!reduz){
+  const tilt=(x,y)=>{cs.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg)`};
+  addEventListener('pointermove',e=>{if(e.pointerType==='mouse')tilt(e.clientX/innerWidth-.5,e.clientY/innerHeight-.5)});
+  addEventListener('deviceorientation',e=>{if(e.gamma!=null)tilt(Math.max(-1,Math.min(1,e.gamma/30))/2,Math.max(-1,Math.min(1,(e.beta-45)/30))/2)});
 }
 
-/* ---------- Guerras ---------- */
+/* ---- faíscas ---- */
 (function(){
-  const g = DATA.guerras.map(r=>({...r, f:num(r.ataques_feitos)||0, d:num(r.ataques_disponiveis)||0, e:num(r.estrelas)||0, nv:num(r.novas_estrelas)||0, p:num(r.destruicao_pct)||0}));
-  const el = $('#view-guerras');
-  if (!g.length){ el.innerHTML = '<div class="empty"><strong>Nenhuma guerra registrada ainda</strong>Mande o print da aba Minha equipe na conversa do projeto e ela aparece aqui.</div>'; return; }
-  const ids = [...new Set(g.map(r=>r.guerra))].sort((a,b)=>a-b);
-  const wars = ids.map(id=>{ const rs=g.filter(r=>r.guerra===id); return {id, data:rs[0].data, opp:rs[0].adversario, rs}; });
-  const by = {};
-  g.forEach(r=>{
-    const p = by[r.jogador] ??= {nome:r.jogador, jogou:0, estrelas:0, novas:0, pct:0, feitos:0, disp:0, porGuerra:{}};
-    p.jogou++; p.estrelas+=r.e; p.novas+=r.nv; p.pct+=r.p; p.feitos+=r.f; p.disp+=r.d; p.porGuerra[r.guerra]=r;
-  });
-  const rows = Object.values(by).map(p=>({...p, media:p.feitos?p.pct/p.feitos:null, perdidos:p.disp-p.feitos}));
-  const cmp = (a,b)=> b.estrelas-a.estrelas || b.novas-a.novas || b.pct-a.pct;
-  const ranked = rows.slice().sort(cmp);
-  const totF = rows.reduce((s,r)=>s+r.feitos,0), totD = rows.reduce((s,r)=>s+r.disp,0);
-  const totE = rows.reduce((s,r)=>s+r.estrelas,0);
-  const pod = ranked.slice(0,3);
-  const podCard = (r,i) => r ? `<div class="pod p${i+1}"><div class="pos">${i+1}º LUGAR</div><div class="nm">${esc(r.nome)}</div><div class="big">${r.estrelas}<span class="star" style="font-size:.6em"> ★</span></div><div class="det">${r.novas} novas · ${fmt(r.media)}% de média · ${r.jogou} de ${ids.length} guerras</div></div>` : '';
-
-  el.innerHTML = `
-  <section>
-    <div class="stats">
-      <div class="stat"><small>Guerras no mês</small><b>${ids.length}</b><em>${ids.length} registradas até agora</em></div>
-      <div class="stat"><small>Estrelas da tropa</small><b>${totE}</b><em>${fmt(totE/Math.max(totF,1),2)} por ataque</em></div>
-      <div class="stat"><small>Ataques usados</small><b>${totF}/${totD}</b><div class="meter"><i style="width:${100*totF/Math.max(totD,1)}%"></i></div></div>
-      <div class="stat"><small>Ataques perdidos</small><b style="color:${totD-totF?'var(--bad)':'var(--ok)'}">${totD-totF}</b><em>${rows.filter(r=>r.perdidos).length} jogadores</em></div>
-    </div>
-  </section>
-  <section>
-    <div><h2>Pódio do mês</h2><p class="sec-sub">Estrelas reais somadas. Empate: novas estrelas, depois destruição.</p></div>
-    <div class="podium">${podCard(pod[1],1)}${podCard(pod[0],0)}${podCard(pod[2],2)}</div>
-  </section>
-  <section id="g-tbl">
-    <div class="sec-head"><div><h2>Ranking para a Liga</h2><p class="sec-sub">Os ${CORTE} primeiros vão para a Liga. Do ${CORTE+1}º em diante, Liga no Union.</p></div>
-      <div class="sort">Ordenar <button data-k="rank">Ranking</button><button data-k="media">Média</button><button data-k="novas">Novas</button></div></div>
-    <div class="tbl"><table><thead><tr><th>#</th><th>Jogador</th><th class="n">Estrelas</th><th>Por guerra</th><th class="n">Novas</th><th class="n">Média</th><th class="n">Ataques</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-    <p class="note">Estrelas = estrelas conquistadas em cada ataque, mesmo em base já derrubada. Novas = estrelas que ainda não tinham sido tiradas daquela base; premiam quem ataca cedo e servem de desempate.</p>
-  </section>
-  <section>
-    <div><h2>Histórico das guerras</h2><p class="sec-sub">Toque numa guerra para ver o desempenho de cada jogador.</p></div>
-    <div class="wars">${wars.slice().reverse().map(warCard).join('')}</div>
-  </section>`;
-
-  sortTable($('#g-tbl'), rows, (s,key)=>s.map((r,i)=>{
-    const pos = ranked.indexOf(r)+1;
-    const isCut = key==='rank' && i===CORTE-1 && s.length>CORTE;
-    const chips = ids.map(id=>{ const w=r.porGuerra[id]; if(!w) return '<span class="chip na" title="Não escalado">–</span>';
-      const cls = w.f<w.d ? 'miss' : w.e>=6?'s6':w.e>=4?'s'+w.e:'low';
-      return `<span class="chip ${cls}" title="Guerra ${id}: ${w.e} estrelas${w.f<w.d?', faltou '+(w.d-w.f):''}">${w.f<w.d && w.f===0?'✕':w.e}</span>`; }).join('');
-    const row = `<tr class="${pos<=3?'top':''} ${isCut?'cut':''}"><td class="rk">${key==='rank'?pos:i+1}</td>
-      <td class="name">${esc(r.nome)}<span class="zone ${pos<=CORTE?'liga':'union'}">${pos<=CORTE?'LIGA':'UNION'}</span></td>
-      <td class="n"><b>${r.estrelas}</b> <span class="star">★</span></td><td><span class="chips">${chips}</span></td>
-      <td class="n">${r.novas}</td>
-      <td class="n">${r.media==null?'–':fmt(r.media)+'%<span class="bar"><i style="width:'+r.media+'%"></i></span>'}</td>
-      <td class="n">${r.feitos}/${r.disp}</td><td>${statusPill(r.feitos,r.disp)}</td></tr>`;
-    return row + (isCut ? `<tr class="cutlabel"><td colspan="8">Linha de corte · Top ${CORTE} vai para a Liga</td></tr>` : '');
-  }).join(''), 'rank', cmp);
-
-  function warCard(w){
-    const rs = w.rs.slice().sort((a,b)=>b.e-a.e||b.nv-a.nv||b.p-a.p);
-    const F=rs.reduce((s,r)=>s+r.f,0), D=rs.reduce((s,r)=>s+r.d,0), E=rs.reduce((s,r)=>s+r.e,0), NV=rs.reduce((s,r)=>s+r.nv,0);
-    const perf = rs.filter(r=>r.e>=6 && r.f===r.d).map(r=>esc(r.jogador));
-    const falt = rs.filter(r=>r.f<r.d).map(r=>esc(r.jogador)+(r.f===0?' (não atacou)':' (faltou '+(r.d-r.f)+')'));
-    const best = rs.slice().sort((a,b)=>b.nv-a.nv||b.e-a.e)[0];
-    return `<details class="war" ${w.id===ids[ids.length-1]?'open':''}>
-      <summary>
-        <div class="wnum"><div><small>GUERRA</small><b>${w.id}</b></div></div>
-        <div class="wmeta"><div class="wopp"><span>contra</span> ${esc(w.opp)}</div>
-          <div class="wtags"><span>${dataBR(w.data)}</span>·<span><b>${F}/${D}</b> ataques</span>·<span><b>${E}</b> estrelas</span>·<span><b>${NV}</b> novas</span></div></div>
-        <div class="wright"><div class="wscore">${F===D?'Completa':(D-F)+' perdidos'}</div><span class="chev">Detalhes</span></div>
-      </summary>
-      <div class="wbody">
-        <div class="hl">
-          <div class="hlbox"><h4>Fizeram 6 estrelas</h4><p>${perf.length?perf.join(', '):'Ninguém'}</p></div>
-          <div class="hlbox"><h4>Mais novas estrelas</h4><p>${best?esc(best.jogador)+' · '+best.nv:'–'}</p></div>
-          <div class="hlbox"><h4>Ataques perdidos</h4><p style="color:${falt.length?'var(--bad)':'var(--ok)'}">${falt.length?falt.join(', '):'Nenhum. Todos atacaram!'}</p></div>
-        </div>
-        <div class="tbl"><table><thead><tr><th>#</th><th>Jogador</th><th class="n">Estrelas</th><th class="n">Novas</th><th class="n">Destruição</th><th class="n">Ataques</th></tr></thead><tbody>
-          ${rs.map((r,i)=>`<tr><td class="rk">${i+1}</td><td class="name">${esc(r.jogador)}</td><td class="n"><b>${r.e}</b> <span class="star">★</span></td><td class="n">${r.nv}</td><td class="n">${r.f?fmt(r.p/r.f)+'%':'–'}</td><td class="n">${r.f}/${r.d} ${r.f<r.d?statusPill(r.f,r.d):''}</td></tr>`).join('')}
-        </tbody></table></div>
-      </div>
-    </details>`;
-  }
+  const c=$('#sparks'),x=c.getContext('2d'); if(reduz) return;
+  let W,H,P=[]; const fit=()=>{W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio}; fit(); addEventListener('resize',fit);
+  for(let i=0;i<60;i++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.8+.4,v:Math.random()*.0012+.0004,a:Math.random()});
+  (function loop(){x.clearRect(0,0,W,H);P.forEach(p=>{p.y-=p.v;p.a+=.02;if(p.y<-.02){p.y=1.02;p.x=Math.random()}
+    x.globalAlpha=.35+.35*Math.sin(p.a);x.fillStyle=p.r>1.6?'#3ee09a':'#e8b53e';x.beginPath();x.arc(p.x*W,p.y*H,p.r*devicePixelRatio,0,7);x.fill()});
+    if(!document.hidden)requestAnimationFrame(loop);else setTimeout(()=>requestAnimationFrame(loop),500)})();
 })();
 
-/* ---------- Última liga ---------- */
+/* ---- contadores ---- */
+$('#counters').innerHTML=[
+  [ids.length,'Guerras no mês',`${ranked.length} jogadores escalados`],
+  [totE,'Estrelas da tropa',`${fmt(totE/Math.max(totF,1),2)} por ataque`],
+  [totD?Math.round(100*totF/totD):0,'Ataques usados',`${totF} de ${totD}`,'%'],
+  [g.filter(r=>r.e>=6&&r.f===r.d).length,'Guerras perfeitas','6 estrelas em 2 ataques'],
+].map(([v,l,e,suf=''])=>`<div class="ct rv"><small>${l}</small><b data-to="${v}" data-suf="${suf}">0${suf}</b><em>${e}</em></div>`).join('');
+const contar=el=>{const to=+el.dataset.to,suf=el.dataset.suf,t0=performance.now(),D=reduz?0:1200;
+  (function f(t){const k=D?Math.min(1,(t-t0)/D):1;el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(f)})(t0)};
+
+/* ---- pódio ---- */
+const pod=ranked.slice(0,3);
+const pdc=(r,i)=>r?`<div class="pd p${i+1}"><div class="who"><div class="medal">${i+1}</div><div class="nm">${esc(r.nome)}</div><div class="st">${r.estrelas}<small> ★</small></div><div class="det">${r.novas} novas · ${fmt(r.media)}%</div></div><div class="ped">${i+1}º</div></div>`:'<div></div>';
+$('#podium').innerHTML = pdc(pod[1],1)+pdc(pod[0],0)+pdc(pod[2],2);
+
+/* ---- ranking ---- */
+let filtro='todos', ordem='rank', busca='';
+const estrelas=n=>'<span class="stars">'+'★'.repeat(n)+'<span class="off">'+'★'.repeat(Math.max(0,6-n))+'</span></span>';
+function drawList(){
+  let rs=ranked.filter(r=>(!busca||r.nome.toLowerCase().includes(busca))&&(filtro==='todos'||(filtro==='liga'&&r.pos<=CORTE)||(filtro==='union'&&r.pos>CORTE)||(filtro==='falta'&&r.perdidos>0)));
+  if(ordem!=='rank') rs=rs.slice().sort((a,b)=>(b[ordem]??-1)-(a[ordem]??-1)||cmp(a,b));
+  const showCut=ordem==='rank'&&!busca&&filtro==='todos';
+  $('#list').innerHTML = rs.length ? rs.map(r=>{
+    const det=ids.map(id=>{const w=r.pg[id];const op=g.find(x=>x.guerra===id)?.adversario||'';
+      return `<div class="wbox"><h4>Guerra ${id} · ${esc(op)}</h4>${w?`${estrelas(w.e)}<br>${w.nv} novas · ${w.f}/${w.d} ataques · ${w.f?fmt(w.p/w.f)+'%':'–'}`:'Não escalado'}</div>`}).join('');
+    return `<div class="row ${r.pos<=3?'top':''}" tabindex="0" role="button" aria-expanded="false">
+      <div class="rk">${r.pos}</div>
+      <div><div class="nm">${esc(r.nome)} <span class="tag ${r.pos<=CORTE?'liga':'union'}">${r.pos<=CORTE?'LIGA':'UNION'}</span>${r.perdidos?`<span class="tag miss">−${r.perdidos} ATAQUE${r.perdidos>1?'S':''}</span>`:''}</div>
+        <div class="meta"><span>${r.novas} novas</span><span>${fmt(r.media)}% média</span><span>${r.feitos}/${r.disp} ataques</span></div>
+        <div class="prog"><i data-w="${100*r.estrelas/maxE}"></i></div></div>
+      <div class="sc"><b>${r.estrelas}</b><small>estrelas</small></div>
+      <div class="detail">${det}</div></div>` + (showCut&&r.pos===CORTE&&ranked.length>CORTE?'<div class="cutline">Linha de corte · Top 15 vai para a Liga</div>':'');
+  }).join('') : '<div class="empty">Nenhum jogador encontrado.</div>';
+  requestAnimationFrame(()=>document.querySelectorAll('#list .prog i').forEach(i=>i.style.width=i.dataset.w+'%'));
+}
+$('#list').addEventListener('click',e=>{const r=e.target.closest('.row');if(r){r.classList.toggle('open');r.setAttribute('aria-expanded',r.classList.contains('open'))}});
+$('#list').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('row')){e.preventDefault();e.target.click()}});
+$('#q').addEventListener('input',e=>{busca=e.target.value.trim().toLowerCase();drawList()});
+const seg=(id,set)=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  $(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));set(b);drawList()});
+seg('#fZona',b=>filtro=b.dataset.f); seg('#fOrd',b=>ordem=b.dataset.o);
+drawList();
+
+/* ---- guerras ---- */
+$('#wars').innerHTML = ids.slice().reverse().map(id=>{
+  const rs=g.filter(r=>r.guerra===id),F=rs.reduce((s,r)=>s+r.f,0),D=rs.reduce((s,r)=>s+r.d,0),E=rs.reduce((s,r)=>s+r.e,0);
+  const perf=rs.filter(r=>r.e>=6&&r.f===r.d).map(r=>esc(r.jogador));
+  const falt=rs.filter(r=>r.f<r.d).map(r=>esc(r.jogador));
+  const best=rs.slice().sort((a,b)=>b.nv-a.nv||b.e-a.e)[0];
+  return `<article class="war rv"><div class="n">${id}</div><div class="d">Guerra ${id} · ${dataBR(rs[0].data)}</div><h3>vs ${esc(rs[0].adversario)}</h3>
+    <div class="kp"><div><b>${E}</b><small>Estrelas</small></div><div><b>${F}/${D}</b><small>Ataques</small></div><div><b>${perf.length}</b><small>Perfeitos</small></div></div>
+    <p><b>Mais novas estrelas:</b> ${best?esc(best.jogador)+' ('+best.nv+')':'–'}</p>
+    <p><b>Perderam ataque:</b> <span style="color:${falt.length?'var(--bad)':'var(--emer)'}">${falt.length?falt.join(', '):'ninguém!'}</span></p></article>`}).join('');
+
+/* ---- liga ---- */
 (function(){
-  const rows = DATA.liga.map(r=>({nome:r.jogador, estrelas:num(r.estrelas), pct:num(r.destruicao_total_pct),
-    feitos:num(r.ataques_feitos), disp:num(r.ataques_disponiveis), media:num(r.destruicao_media_pct)}));
-  const cmp=(a,b)=>b.estrelas-a.estrelas||b.pct-a.pct;
-  const escal = rows.filter(r=>r.disp>0);
-  const totF = rows.reduce((s,r)=>s+r.feitos,0), totD = rows.reduce((s,r)=>s+r.disp,0);
-  const perdidos = rows.filter(r=>r.disp>r.feitos);
-  const top = (k,lab)=>'<ol>'+rows.slice().sort((a,b)=>b[k]-a[k]).slice(0,5).map((r,i)=>`<li><span><span class="medal">${i+1}</span>${esc(r.nome)}</span><span>${lab(r)}</span></li>`).join('')+'</ol>';
-  $('#view-liga').innerHTML = `
-  <section>
-    <div><h2>Liga de Clãs de outubro</h2><p class="sec-sub">Resultado final, 7 rodadas.</p></div>
-    <div class="stats">
-      <div class="stat"><small>Escalados</small><b>${escal.length}</b></div>
-      <div class="stat"><small>Estrelas</small><b>${rows.reduce((s,r)=>s+r.estrelas,0)}</b></div>
-      <div class="stat"><small>Ataques usados</small><b>${totF}/${totD}</b><div class="meter"><i style="width:${100*totF/totD}%"></i></div></div>
-      <div class="stat"><small>Ataques perdidos</small><b style="color:var(--bad)">${totD-totF}</b></div>
-    </div>
-    <div class="cols">
-      <div class="box"><h3>Mais estrelas</h3>${top('estrelas',r=>r.estrelas+' <span class="star">★</span>')}</div>
-      <div class="box"><h3>Maior destruição</h3>${top('pct',r=>r.pct+'%')}</div>
-      <div class="box"><h3>Perderam ataques</h3><ul>${perdidos.map(r=>`<li><span>${esc(r.nome)}</span><span>${statusPill(r.feitos,r.disp)}</span></li>`).join('')}</ul></div>
-    </div>
-  </section>
-  <section id="liga-tbl">
-    <div class="sec-head"><h2>Ranking da liga</h2><div class="sort">Ordenar <button data-k="rank">Estrelas</button><button data-k="pct">Destruição</button><button data-k="media">Média</button></div></div>
-    <div class="tbl"><table><thead><tr><th>#</th><th>Jogador</th><th class="n">Estrelas</th><th class="n">Destruição total</th><th class="n">Média</th><th class="n">Ataques</th><th>Situação</th></tr></thead><tbody></tbody></table></div>
-  </section>`;
-  sortTable($('#liga-tbl'), rows, s=>s.map((r,i)=>`<tr class="${i<3?'top':''}"><td class="rk">${i+1}</td><td class="name">${esc(r.nome)}</td><td class="n"><b>${r.estrelas}</b> <span class="star">★</span></td><td class="n">${r.pct}%</td><td class="n">${r.media==null?'–':fmt(r.media)+'%<span class="bar"><i style="width:'+r.media+'%"></i></span>'}</td><td class="n">${r.feitos}/${r.disp}</td><td>${statusPill(r.feitos,r.disp)}</td></tr>`).join(''), 'rank', cmp);
+  const L=DATA.liga.map(r=>({nome:r.jogador,e:num(r.estrelas)||0,p:num(r.destruicao_total_pct)||0,f:num(r.ataques_feitos)||0,d:num(r.ataques_disponiveis)||0}));
+  if(!L.length){$('#liga').hidden=true;return}
+  const tF=L.reduce((s,r)=>s+r.f,0),tD=L.reduce((s,r)=>s+r.d,0),tE=L.reduce((s,r)=>s+r.e,0);
+  $('#ligaSub').textContent=`${L.filter(r=>r.d>0).length} escalados · ${tE} estrelas · ${tF} de ${tD} ataques usados.`;
+  const top=(k,lab)=>'<ol>'+L.slice().sort((a,b)=>b[k]-a[k]).slice(0,5).map((r,i)=>`<li><span>${i+1}. ${esc(r.nome)}</span><span>${lab(r)}</span></li>`).join('')+'</ol>';
+  const perd=L.filter(r=>r.d>r.f);
+  $('#ligaBox').innerHTML=`<div class="box rv"><h3>Mais estrelas</h3>${top('e',r=>r.e+' ★')}</div>
+    <div class="box rv"><h3>Maior destruição</h3>${top('p',r=>r.p+'%')}</div>
+    <div class="box rv"><h3>Perderam ataques</h3><ol>${perd.length?perd.map(r=>`<li><span>${esc(r.nome)}</span><span style="color:var(--bad)">−${r.d-r.f}</span></li>`).join(''):'<li>Ninguém</li>'}</ol></div>`;
 })();
 
-/* ---------- Abas ---------- */
-function show(v){
-  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.v===v));
-  $('#view-liga').hidden = v!=='liga'; $('#view-guerras').hidden = v!=='guerras';
+/* ---- revelar ao rolar ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;
+  t.classList.add('on'); if(t.id==='podium')t.classList.add('go'); t.querySelectorAll?.('[data-to]').forEach(contar); if(t.matches('[data-to]'))contar(t); io.unobserve(t)}),{threshold:.2});
+document.querySelectorAll('.rv,#podium').forEach(el=>io.observe(el));
+document.querySelectorAll('.ct').forEach(el=>io.observe(el));
+
+/* ---- prova social na home ---- */
+$('#proof').innerHTML = [
+  `<b>${ranked.length}</b> guerreiros ativos`,
+  `<b>${totE}</b> estrelas no mês`,
+  `<b>${totD?Math.round(100*totF/totD):0}%</b> dos ataques usados`,
+  DATA.liga.length?`<b>${DATA.liga.reduce((s,r)=>s+(num(r.estrelas)||0),0)}</b> estrelas na última Liga`:''
+].filter(Boolean).map(s=>`<span>${s}</span>`).join('');
+
+/* ---- copiar tag ---- */
+$('#copiar').addEventListener('click',async e=>{try{await navigator.clipboard.writeText('#PJP9CJY9');e.target.textContent='Copiado!'}catch{e.target.textContent='#PJP9CJY9'}setTimeout(()=>e.target.textContent='Copiar',2000)});
+
+/* ---- sorteio ---- */
+const TK=document.querySelector('.ticket').outerHTML.replace('id="tk"','id="tk2"').replace('url(#tk)','url(#tk2)');
+(function(){
+  const S=(DATA.sorteio||[]).filter(r=>r.jogador);
+  $('#sorteioBox').innerHTML = S.length
+    ? `<div class="sorteio rv"><div>${TK}</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p></div>`
+    : `<div class="sorteio rv"><div>${TK}</div><div class="big">Em breve</div><p>O ganhador do bilhete dourado da próxima Liga aparece aqui.</p></div>`;
+  document.querySelectorAll('#sorteioBox .rv').forEach(el=>io.observe(el));
+})();
+
+/* ---- rotas: Início / Painel ---- */
+function rota(){
+  const h=location.hash.slice(1), painel=h.startsWith('painel');
+  $('#v-inicio').hidden=painel; $('#v-painel').hidden=!painel;
+  document.querySelectorAll('.links a[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===(painel?'painel':'inicio')));
+  const sub=painel&&h.split('/')[1];
+  if(sub) document.getElementById(sub)?.scrollIntoView({behavior:reduz?'auto':'smooth'});
+  else if(painel||h==='inicio') scrollTo(0,0);
+  else if(h) document.getElementById(h)?.scrollIntoView();
 }
-$('.tabs').addEventListener('click', e=>{const b=e.target.closest('button'); if(b) show(b.dataset.v);});
-show(location.hash.slice(1)==='liga' ? 'liga' : 'guerras');
+addEventListener('hashchange',rota); rota();
 </script>
-
-</body></html>
+</body>
+</html>
