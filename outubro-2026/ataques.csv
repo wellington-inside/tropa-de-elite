@@ -1,0 +1,41 @@
+data,tipo,guerra,adversario,jogador,ataques_feitos,ataques_disponiveis,estrelas,novas_estrelas,destruicao_pct,observacao
+2026-10-13,guerra,1,2DeRanged 2.0,HOMEM DE FERRO,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Weeto01,2,2,6,4,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,well,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,frank_castle,2,2,3,3,176,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Jefferson,2,2,6,4,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Wallace,2,2,5,1,180,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Felipe Santos,2,2,5,4,189,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,ludexNox,2,2,5,2,197,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,HOMEM DE FERRO2,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,FumeKnight,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Siegfried,2,2,3,2,156,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Player One YT,2,2,3,2,180,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Robson Alves,2,2,5,5,199,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Matheus$$$,2,2,6,2,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,danielstbr,2,2,6,0,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Hades,2,2,3,3,181,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Marko,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,CMD Samuel,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,Monica,2,2,6,3,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-13,guerra,1,2DeRanged 2.0,well2.0,2,2,6,1,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,HOMEM DE FERRO,2,2,6,5,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Weeto01,2,2,6,4,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,well,2,2,3,0,179,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Jefferson,2,2,3,0,122,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Wallace,2,2,6,2,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Felipe Santos,2,2,6,5,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,FumeKnight,2,2,4,4,191,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,HOMEM DE FERRO2,2,2,5,5,199,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Player One YT,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Siegfried,2,2,4,0,185,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Robson Alves,2,2,5,5,179,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,danielstbr,2,2,6,2,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Matheus$$$,2,2,4,3,172,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Hades,2,2,2,0,177,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Marko,2,2,5,5,193,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,XvKiravX,2,2,4,4,177,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,CMD Samuel,2,2,3,1,170,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Matheus PH,2,2,4,2,102,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,Dudu,2,2,3,1,144,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-15,guerra,2,~☆Eski Toprak☆~,well2.0,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
