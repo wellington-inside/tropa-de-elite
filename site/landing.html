@@ -404,12 +404,12 @@ drawList();
 
 /* ---- guerras ---- */
 $('#wars').innerHTML = ids.slice().reverse().map(id=>{
-  const rs=g.filter(r=>r.guerra===id),F=rs.reduce((s,r)=>s+r.f,0),D=rs.reduce((s,r)=>s+r.d,0),E=rs.reduce((s,r)=>s+r.e,0);
+  const rs=g.filter(r=>r.guerra===id),F=rs.reduce((s,r)=>s+r.f,0),D=rs.reduce((s,r)=>s+r.d,0),E=rs.reduce((s,r)=>s+r.e,0),NV=rs.reduce((s,r)=>s+r.nv,0);
   const perf=rs.filter(r=>r.e>=6&&r.f===r.d).map(r=>esc(r.jogador));
   const falt=rs.filter(r=>r.f<r.d).map(r=>esc(r.jogador));
   const best=rs.slice().sort((a,b)=>b.nv-a.nv||b.e-a.e)[0];
   return `<article class="war rv"><div class="n">${id}</div><div class="d">Guerra ${id} · ${dataBR(rs[0].data)}</div><h3>vs ${esc(rs[0].adversario)}</h3>
-    <div class="kp"><div><b>${E}</b><small>Estrelas</small></div><div><b>${F}/${D}</b><small>Ataques</small></div><div><b>${perf.length}</b><small>Perfeitos</small></div></div>
+    <div class="kp"><div><b>${NV}/${rs.length*3}</b><small>Placar</small></div><div><b>${F}/${D}</b><small>Ataques</small></div><div><b>${perf.length}</b><small>Perfeitos</small></div></div>
     <p><b>Mais novas estrelas:</b> ${best?esc(best.jogador)+' ('+best.nv+')':'–'}</p>
     <p><b>Perderam ataque:</b> <span style="color:${falt.length?'var(--bad)':'var(--emer)'}">${falt.length?falt.join(', '):'ninguém!'}</span></p></article>`}).join('');
 
