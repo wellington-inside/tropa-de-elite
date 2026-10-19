@@ -39,23 +39,23 @@ data,tipo,guerra,adversario,jogador,ataques_feitos,ataques_disponiveis,estrelas,
 2026-10-15,guerra,2,~☆Eski Toprak☆~,Matheus PH,2,2,4,2,102,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
 2026-10-15,guerra,2,~☆Eski Toprak☆~,Dudu,2,2,3,1,144,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
 2026-10-15,guerra,2,~☆Eski Toprak☆~,well2.0,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,HOMEM DE FERRO,2,2,4,0,182,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Weeto01,2,2,6,4,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,well,2,2,5,2,165,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,frank_castle,2,2,4,4,174,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Jefferson,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Wallace,2,2,6,1,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Felipe Santos,2,2,5,3,199,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,FumeKnight,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,HOMEM DE FERRO2,2,2,4,3,163,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,ludexNox,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Player One YT,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Siegfried,2,2,4,3,197,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Robson Alves,2,2,4,4,173,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,danielstbr,2,2,6,0,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Matheus$$$,2,2,6,3,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Hades,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Marko,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Matheus PH,2,2,5,3,196,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,Dudu,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
-2026-10-19,guerra,3,اسؤود اليمن,well2.0,2,2,6,0,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,HOMEM DE FERRO,2,2,4,0,182,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Weeto01,2,2,6,4,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,well,2,2,5,2,165,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,frank_castle,2,2,4,4,174,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Jefferson,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Wallace,2,2,6,1,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Felipe Santos,2,2,5,3,199,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,FumeKnight,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,HOMEM DE FERRO2,2,2,4,3,163,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,ludexNox,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Player One YT,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Siegfried,2,2,4,3,197,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Robson Alves,2,2,4,4,173,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,danielstbr,2,2,6,0,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Matheus$$$,2,2,6,3,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Hades,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Marko,2,2,6,6,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Matheus PH,2,2,5,3,196,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,Dudu,0,2,0,0,0,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
+2026-10-18,guerra,3,اسؤود اليمن,well2.0,2,2,6,0,200,estrelas = estrelas reais dos ataques; novas_estrelas = desempate; % = soma dos ataques
