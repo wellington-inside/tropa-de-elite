@@ -7,6 +7,7 @@ mes = raiz / "outubro-2026"
 ler = lambda n: list(csv.DictReader(open(mes / n, encoding="utf8")))
 data = {"liga": ler("liga-resumo.csv"), "guerras": ler("ataques.csv"),
         "sorteio": ler("sorteio.csv") if (mes / "sorteio.csv").exists() else [],
+        "banidos": list(csv.DictReader(open(raiz / "banidos.csv", encoding="utf8"))) if (raiz / "banidos.csv").exists() else [],
         "atualizado": datetime.datetime.now().strftime("%d/%m/%Y %H:%M")}
 tpl = (raiz / "site/landing.html").read_text(encoding="utf8")
 tpl = tpl.replace("__CLA__", "https://link.clashofclans.com/pt?action=OpenClanProfile&amp;tag=PJP9CJY9")
