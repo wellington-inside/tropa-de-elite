@@ -159,11 +159,14 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .war p{margin:0;font-size:13px;color:var(--muted)} .war p b{color:var(--fg)}
 
 /* liga */
-.liga{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.liga{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;align-items:start}
 .box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
 .box h3{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 .box ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
 .box li{display:flex;justify-content:space-between;gap:8px}
+.box li.extra{display:none}.box.aberto li.extra{display:flex}
+.mais{margin-top:12px;width:100%;border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:9px;font-weight:800;font-size:13px;cursor:pointer;color:var(--gold)}
+.mais:hover{border-color:var(--gold)}
 .box li span:last-child{font-weight:900;white-space:nowrap}
 
 /* como entrar */
@@ -281,9 +284,6 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   <div class="head rv"><span class="kick">Ranking para a Liga</span><h2>Corrida pelas 15 vagas</h2><p class="sub">Setas mostram quanto cada um subiu ▲ ou caiu ▼ desde a guerra anterior. Toque em um jogador para ver guerra por guerra.</p></div>
   <div class="tools rv">
     <label class="search"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Buscar jogador" aria-label="Buscar jogador"></label>
-    <div class="seg" id="fZona" role="group" aria-label="Filtrar">
-      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Clã parceiro</button><button data-f="falta">Perderam ataque</button><button data-f="subiu">Subiram</button><button data-f="caiu">Caíram</button><button data-f="ban">Banidos</button>
-    </div>
     <div class="seg" id="fOrd" role="group" aria-label="Ordenar">
       <button data-o="rank" aria-pressed="true">Estrelas</button><button data-o="novas">Novas</button><button data-o="media">Destruição</button>
     </div>
@@ -418,7 +418,7 @@ $('#list').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.t
 $('#q').addEventListener('input',e=>{busca=e.target.value.trim().toLowerCase();drawList()});
 const seg=(id,set)=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   $(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));set(b);drawList()});
-seg('#fZona',b=>filtro=b.dataset.f); seg('#fOrd',b=>ordem=b.dataset.o);
+seg('#fOrd',b=>ordem=b.dataset.o);
 drawList();
 
 /* ---- guerras ---- */
@@ -438,11 +438,13 @@ $('#wars').innerHTML = ids.slice().reverse().map(id=>{
   if(!L.length){$('#liga').hidden=true;return}
   const tF=L.reduce((s,r)=>s+r.f,0),tD=L.reduce((s,r)=>s+r.d,0),tE=L.reduce((s,r)=>s+r.e,0);
   $('#ligaSub').textContent=`${L.filter(r=>r.d>0).length} escalados · ${tE} estrelas · ${tF} de ${tD} ataques usados.`;
-  const top=(k,lab)=>'<ol>'+L.slice().sort((a,b)=>b[k]-a[k]).slice(0,5).map((r,i)=>`<li><span>${i+1}. ${esc(r.nome)}</span><span>${lab(r)}</span></li>`).join('')+'</ol>';
+  const top=(k,lab)=>{const s=L.filter(r=>r.d>0).sort((a,b)=>b[k]-a[k]);return '<ol>'+s.map((r,i)=>`<li${i>=5?' class="extra"':''}><span>${i+1}. ${esc(r.nome)}</span><span>${lab(r)}</span></li>`).join('')+'</ol>'+(s.length>5?`<button class="mais" type="button">Mostrar todos (${s.length})</button>`:'')};
   const perd=L.filter(r=>r.d>r.f);
   $('#ligaBox').innerHTML=`<div class="box rv"><h3>Mais estrelas</h3>${top('e',r=>r.e+' ★')}</div>
     <div class="box rv"><h3>Maior destruição</h3>${top('p',r=>r.p+'%')}</div>
     <div class="box rv"><h3>Perderam ataques</h3><ol>${perd.length?perd.map(r=>`<li><span>${esc(r.nome)}</span><span style="color:var(--bad)">−${r.d-r.f}</span></li>`).join(''):'<li>Ninguém</li>'}</ol></div>`;
+  $('#ligaBox').addEventListener('click',e=>{const b=e.target.closest('.mais');if(!b)return;const box=b.closest('.box'),on=box.classList.toggle('aberto');
+    b.textContent=on?'Mostrar menos':`Mostrar todos (${box.querySelectorAll('li').length})`;});
 })();
 
 /* ---- revelar ao rolar ---- */
