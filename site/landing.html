@@ -244,7 +244,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
     <div class="perk rv"><div class="ico">💬</div><h3>WhatsApp obrigatório</h3><p>Avisos de guerra, escalação e Liga num lugar só. Ninguém fica perdido.</p></div>
     <div class="perk rv"><div class="ico">⚔️</div><h3>Guerra o mês inteiro</h3><p>Guerras seguidas, 2 ataques por guerra. Cada estrela conta pro seu ranking.</p></div>
     <div class="perk rv"><div class="ico">🏆</div><h3>Vaga na Liga por mérito</h3><p>Os 15 melhores das guerras do mês jogam a Liga na Tropa. Sem panelinha.</p></div>
-    <div class="perk rv"><div class="ico">🤝</div><h3>Todo mundo joga Liga</h3><p>Quem fica de fora do top 15 joga a Liga no clã Union. Ninguém fica parado.</p></div>
+    <div class="perk rv"><div class="ico">🤝</div><h3>Todo mundo joga Liga</h3><p>Quem fica de fora do top 15 joga a Liga no nosso clã parceiro. Ninguém fica parado.</p></div>
   </div>
   <div class="proof rv" id="proof"></div>
 </div></section>
@@ -282,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   <div class="tools rv">
     <label class="search"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Buscar jogador" aria-label="Buscar jogador"></label>
     <div class="seg" id="fZona" role="group" aria-label="Filtrar">
-      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Union</button><button data-f="falta">Perderam ataque</button><button data-f="subiu">Subiram</button><button data-f="caiu">Caíram</button><button data-f="ban">Banidos</button>
+      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Clã parceiro</button><button data-f="falta">Perderam ataque</button><button data-f="subiu">Subiram</button><button data-f="caiu">Caíram</button><button data-f="ban">Banidos</button>
     </div>
     <div class="seg" id="fOrd" role="group" aria-label="Ordenar">
       <button data-o="rank" aria-pressed="true">Estrelas</button><button data-o="novas">Novas</button><button data-o="media">Destruição</button>
@@ -405,7 +405,7 @@ function drawList(){
       return `<div class="wbox"><h4>Guerra ${id} · ${esc(op)}</h4>${w?`${estrelas(w.e)}<br>${w.nv} novas · ${w.f}/${w.d} ataques · ${w.f?fmt(w.p/w.f)+'%':'–'}`:'Não escalado'}</div>`}).join('');
     return `<div class="row ${r.pos<=3?'top':''} ${r.ban?'banido':''}" tabindex="0" role="button" aria-expanded="false">
       <div class="rk">${r.pos}${mov(r)}</div>
-      <div><div class="nm"><span class="${r.ban?'riscado':''}">${esc(r.nome)}</span> ${r.ban?'<span class="tag ban">⛔ BANIDO</span>':`<span class="tag ${r.pos<=CORTE?'liga':'union'}">${r.pos<=CORTE?'LIGA':'UNION'}</span>`}${r.perdidos?`<span class="tag miss">−${r.perdidos} ATAQUE${r.perdidos>1?'S':''}</span>`:''}</div>
+      <div><div class="nm"><span class="${r.ban?'riscado':''}">${esc(r.nome)}</span> ${r.ban?'<span class="tag ban">⛔ BANIDO</span>':`<span class="tag ${r.pos<=CORTE?'liga':'union'}">${r.pos<=CORTE?'LIGA':'CLÃ PARCEIRO'}</span>`}${r.perdidos?`<span class="tag miss">−${r.perdidos} ATAQUE${r.perdidos>1?'S':''}</span>`:''}</div>
         <div class="meta"><span>${r.novas} novas</span><span>${fmt(r.media)}% média</span><span>${r.feitos}/${r.disp} ataques</span></div>
         <div class="prog"><i data-w="${100*r.estrelas/maxE}"></i></div></div>
       <div class="sc"><b>${r.estrelas}</b><small>estrelas</small></div>
