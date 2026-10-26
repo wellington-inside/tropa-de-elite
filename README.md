@@ -14,7 +14,7 @@ Guia para continuar este trabalho em outra conversa ou ferramenta.
 
 ## Regras combinadas com o Wellington
 - Ranking das guerras: estrelas reais somadas; desempate por novas estrelas, depois destruição.
-- Os 15 melhores das guerras do mês vigente vão para a Liga; os demais jogam no clã Union.
+- Os 15 melhores das guerras do mês vigente vão para a Liga; os demais jogam a Liga no clã parceiro. Banidos ficam em banidos.csv.
 - Os prints chegam da aba "Minha equipe > Ataques". As estrelas reais dos ataques abaixo de 100%
   são contadas pelas estrelinhas acesas; o número no quadro amarelo é o de novas estrelas.
 - Página publicada: https://claude.ai/artifact/3Da9pqxBDzhMgPt799ojTc
