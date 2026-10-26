@@ -116,7 +116,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .list{display:flex;flex-direction:column;gap:8px}
 .row{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 14px;cursor:pointer;transition:border-color .2s,transform .2s}
 .row:hover{border-color:#4a3f2d;transform:translateX(3px)}
-.row .rk{font-family:var(--display);font-size:22px;color:var(--muted);text-align:center}
+.row .rk{font-family:var(--display);font-size:22px;color:var(--muted);text-align:center;display:flex;flex-direction:column;align-items:center;line-height:1.1}
+.mv{font-family:var(--body);font-size:11px;font-weight:900;letter-spacing:.02em;margin-top:2px}
+.mv.up{color:var(--emer)}.mv.dn{color:var(--bad)}.mv.eq{color:var(--muted);opacity:.6}.mv.nv{color:var(--gold);font-size:9px}
 .row.top .rk{color:var(--gold)}
 .row .nm{font-weight:900;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;overflow-wrap:anywhere}
 .row .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
@@ -124,7 +126,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .row .sc b{font-family:var(--display);font-weight:400;font-size:26px;color:var(--gold);line-height:1}
 .row .sc small{display:block;font-size:11px;color:var(--muted)}
 .tag{flex:none;font-size:10px;font-weight:900;letter-spacing:.08em;padding:2px 7px;border-radius:4px}
-.tag.liga{background:var(--emer-soft);color:var(--emer)}
+.tag.liga{display:inline-block;background:var(--emer-soft);color:var(--emer)}
 .tag.union{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}
 .tag.miss{background:var(--bad-soft);color:var(--bad)}
 .row>div{min-width:0}
@@ -272,11 +274,11 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   <div class="podium" id="podium"></div>
 </div></section>
 <section id="ranking"><div class="wrap">
-  <div class="head rv"><span class="kick">Ranking para a Liga</span><h2>Corrida pelas 15 vagas</h2><p class="sub">Toque em um jogador para ver guerra por guerra.</p></div>
+  <div class="head rv"><span class="kick">Ranking para a Liga</span><h2>Corrida pelas 15 vagas</h2><p class="sub">Setas mostram quanto cada um subiu ▲ ou caiu ▼ desde a guerra anterior. Toque em um jogador para ver guerra por guerra.</p></div>
   <div class="tools rv">
     <label class="search"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Buscar jogador" aria-label="Buscar jogador"></label>
     <div class="seg" id="fZona" role="group" aria-label="Filtrar">
-      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Union</button><button data-f="falta">Perderam ataque</button>
+      <button data-f="todos" aria-pressed="true">Todos</button><button data-f="liga">Liga</button><button data-f="union">Union</button><button data-f="falta">Perderam ataque</button><button data-f="subiu">Subiram</button><button data-f="caiu">Caíram</button>
     </div>
     <div class="seg" id="fOrd" role="group" aria-label="Ordenar">
       <button data-o="rank" aria-pressed="true">Estrelas</button><button data-o="novas">Novas</button><button data-o="media">Destruição</button>
@@ -324,6 +326,18 @@ g.forEach(r=>{const p=by[r.jogador]??={nome:r.jogador,jogou:0,estrelas:0,novas:0
 const cmp=(a,b)=>b.estrelas-a.estrelas||b.novas-a.novas||b.pct-a.pct;
 const ranked=Object.values(by).map(p=>({...p,media:p.feitos?p.pct/p.feitos:null,perdidos:p.disp-p.feitos})).sort(cmp);
 ranked.forEach((r,i)=>r.pos=i+1);
+/* posição antes da última guerra */
+const ultima=ids[ids.length-1], antes={};
+if(ids.length>1){
+  const pb={};
+  g.filter(r=>r.guerra!==ultima).forEach(r=>{const p=pb[r.jogador]??={estrelas:0,novas:0,pct:0};p.estrelas+=r.e;p.novas+=r.nv;p.pct+=r.p;});
+  Object.entries(pb).sort((a,b)=>cmp(a[1],b[1])).forEach(([n],i)=>antes[n]=i+1);
+}
+ranked.forEach(r=>{r.antes=antes[r.nome]??null; r.delta=r.antes==null?null:r.antes-r.pos;});
+const mov=r=>ids.length<2?'':r.antes==null?'<span class="mv nv" title="Estreou na última guerra">NOVO</span>'
+  :r.delta>0?`<span class="mv up" title="Subiu ${r.delta} desde a guerra ${ultima-1}">▲${r.delta}</span>`
+  :r.delta<0?`<span class="mv dn" title="Caiu ${-r.delta} desde a guerra ${ultima-1}">▼${-r.delta}</span>`
+  :'<span class="mv eq" title="Manteve a posição">–</span>';
 const maxE = Math.max(1,...ranked.map(r=>r.estrelas));
 const totF=g.reduce((s,r)=>s+r.f,0), totD=g.reduce((s,r)=>s+r.d,0), totE=g.reduce((s,r)=>s+r.e,0);
 const d0 = g[0]?.data || '';
@@ -378,14 +392,14 @@ $('#podium').innerHTML = pdc(pod[1],1)+pdc(pod[0],0)+pdc(pod[2],2);
 let filtro='todos', ordem='rank', busca='';
 const estrelas=n=>'<span class="stars">'+'★'.repeat(n)+'<span class="off">'+'★'.repeat(Math.max(0,6-n))+'</span></span>';
 function drawList(){
-  let rs=ranked.filter(r=>(!busca||r.nome.toLowerCase().includes(busca))&&(filtro==='todos'||(filtro==='liga'&&r.pos<=CORTE)||(filtro==='union'&&r.pos>CORTE)||(filtro==='falta'&&r.perdidos>0)));
+  let rs=ranked.filter(r=>(!busca||r.nome.toLowerCase().includes(busca))&&(filtro==='todos'||(filtro==='liga'&&r.pos<=CORTE)||(filtro==='union'&&r.pos>CORTE)||(filtro==='falta'&&r.perdidos>0)||(filtro==='subiu'&&r.delta>0)||(filtro==='caiu'&&r.delta<0)));
   if(ordem!=='rank') rs=rs.slice().sort((a,b)=>(b[ordem]??-1)-(a[ordem]??-1)||cmp(a,b));
   const showCut=ordem==='rank'&&!busca&&filtro==='todos';
   $('#list').innerHTML = rs.length ? rs.map(r=>{
     const det=ids.map(id=>{const w=r.pg[id];const op=g.find(x=>x.guerra===id)?.adversario||'';
       return `<div class="wbox"><h4>Guerra ${id} · ${esc(op)}</h4>${w?`${estrelas(w.e)}<br>${w.nv} novas · ${w.f}/${w.d} ataques · ${w.f?fmt(w.p/w.f)+'%':'–'}`:'Não escalado'}</div>`}).join('');
     return `<div class="row ${r.pos<=3?'top':''}" tabindex="0" role="button" aria-expanded="false">
-      <div class="rk">${r.pos}</div>
+      <div class="rk">${r.pos}${mov(r)}</div>
       <div><div class="nm">${esc(r.nome)} <span class="tag ${r.pos<=CORTE?'liga':'union'}">${r.pos<=CORTE?'LIGA':'UNION'}</span>${r.perdidos?`<span class="tag miss">−${r.perdidos} ATAQUE${r.perdidos>1?'S':''}</span>`:''}</div>
         <div class="meta"><span>${r.novas} novas</span><span>${fmt(r.media)}% média</span><span>${r.feitos}/${r.disp} ataques</span></div>
         <div class="prog"><i data-w="${100*r.estrelas/maxE}"></i></div></div>
