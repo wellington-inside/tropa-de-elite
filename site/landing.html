@@ -215,6 +215,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .sorteio{text-align:center;padding:30px 18px;border-radius:18px;border:1px dashed var(--gold);background:linear-gradient(135deg,#2a2010,var(--panel) 70%)}
 .sorteio .big{font-family:var(--display);font-size:clamp(28px,6vw,44px);color:var(--gold2)}
 .sorteio p{color:var(--muted);margin:6px 0 0}
+.sorteio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px;align-items:start}
+.chipz{display:flex;flex-wrap:wrap;gap:8px}
+.chipok{background:var(--emer-soft);color:var(--emer);border:1px solid #1f5e3e;border-radius:999px;padding:6px 12px;font-weight:800;font-size:14px}
 footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:12px;text-align:center}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.pd .who{opacity:1;transform:none}}
 </style>
@@ -297,7 +300,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
 </div></section>
 
 <section id="sorteio"><div class="wrap">
-  <div class="head rv"><span class="kick">Bilhete dourado</span><h2>Resultado do sorteio</h2></div>
+  <div class="head rv"><span class="kick">Bilhete dourado</span><h2>Sorteio do bilhete dourado</h2></div>
   <div id="sorteioBox"></div>
 </div></section>
 
@@ -468,9 +471,14 @@ $('#copiar').addEventListener('click',async e=>{try{await navigator.clipboard.wr
 const TK=document.querySelector('.ticket').outerHTML.replace('id="tk"','id="tk2"').replace('url(#tk)','url(#tk2)');
 (function(){
   const S=(DATA.sorteio||[]).filter(r=>r.jogador);
-  $('#sorteioBox').innerHTML = S.length
-    ? `<div class="sorteio rv"><div>${TK}</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p></div>`
-    : `<div class="sorteio rv"><div>${TK}</div><div class="big">Em breve</div><p>O ganhador do bilhete dourado da próxima Liga aparece aqui.</p></div>`;
+  const P=(DATA.participantes||[]), dentro=P.filter(r=>r.situacao==='participa'), fora=P.filter(r=>r.situacao!=='participa');
+  const lista = P.length ? `<div class="sorteio-grid">
+      <div class="box rv"><h3>🎟️ Concorrendo (${dentro.length})</h3><div class="chipz">${dentro.map(r=>`<span class="chipok">${esc(r.jogador)}</span>`).join('')}</div></div>
+      <div class="box rv"><h3>Fora do sorteio</h3><ol>${fora.map(r=>`<li><span>${esc(r.jogador)}</span><span style="color:var(--bad);font-weight:700">${esc(r.motivo)}</span></li>`).join('')}</ol></div>
+    </div>` : '';
+  $('#sorteioBox').innerHTML = (S.length
+    ? `<div class="sorteio rv"><div>${TK}</div><div class="kick" style="margin-top:6px">Ganhador</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p></div>`
+    : `<div class="sorteio rv"><div>${TK}</div><div class="big">${P.length?'Sorteio ao vivo em breve':'Em breve'}</div><p>${P.length?'Regra: 7 ataques na Liga e nenhum ataque de 1 estrela. O sorteio é feito ao vivo na roleta.':'O ganhador do bilhete dourado da próxima Liga aparece aqui.'}</p>${P.length?'<a class="btn gold" style="margin-top:14px" href="sorteio.html">🎡 Ver a roleta</a>':''}</div>`) + lista;
   document.querySelectorAll('#sorteioBox .rv').forEach(el=>io.observe(el));
 })();
 
