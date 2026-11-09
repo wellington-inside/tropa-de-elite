@@ -19,9 +19,3 @@ tpl = tpl.replace("__BRASAO__", (raiz / "marca/brasao.svg").read_text(encoding="
 saida = Path(sys.argv[1]) if len(sys.argv) > 1 else raiz / "index.html"
 saida.write_text(tpl.replace("__DATA__", json.dumps(data, ensure_ascii=False)), encoding="utf8")
 print("Gerado:", saida)
-# roleta do bilhete dourado
-rol = (raiz / "site/sorteio.html").read_text(encoding="utf8")
-rol = rol.replace("__BRASAO__", (raiz / "marca/brasao.svg").read_text(encoding="utf8"))
-nomes = [r["jogador"] for r in data["participantes"] if r.get("situacao") == "participa"]
-(saida.parent / "sorteio.html").write_text(rol.replace("__PART__", json.dumps(nomes, ensure_ascii=False)), encoding="utf8")
-print("Gerado:", saida.parent / "sorteio.html")

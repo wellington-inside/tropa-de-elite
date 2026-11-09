@@ -477,8 +477,8 @@ const TK=document.querySelector('.ticket').outerHTML.replace('id="tk"','id="tk2"
       <div class="box rv"><h3>Fora do sorteio</h3><ol>${fora.map(r=>`<li><span>${esc(r.jogador)}</span><span style="color:var(--bad);font-weight:700">${esc(r.motivo)}</span></li>`).join('')}</ol></div>
     </div>` : '';
   $('#sorteioBox').innerHTML = (S.length
-    ? `<div class="sorteio rv"><div>${TK}</div><div class="kick" style="margin-top:6px">Ganhador</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p></div>`
-    : `<div class="sorteio rv"><div>${TK}</div><div class="big">${P.length?'Sorteio ao vivo em breve':'Em breve'}</div><p>${P.length?'Regra: 7 ataques na Liga e nenhum ataque de 1 estrela. O sorteio é feito ao vivo na roleta.':'O ganhador do bilhete dourado da próxima Liga aparece aqui.'}</p>${P.length?'<a class="btn gold" style="margin-top:14px" href="sorteio.html">🎡 Ver a roleta</a>':''}</div>`) + lista;
+    ? `<div class="sorteio rv"><div>${TK}</div><div class="kick" style="margin-top:6px">Ganhador</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p><p style="margin-top:10px">🎬 O vídeo com o resultado do sorteio está no grupo do WhatsApp.</p></div>`
+    : `<div class="sorteio rv"><div>${TK}</div><div class="big">Em breve</div><p>${P.length?'Regra: 7 ataques na Liga e nenhum ataque de 1 estrela. O resultado sai em vídeo no grupo do WhatsApp.':'O ganhador do bilhete dourado da próxima Liga aparece aqui.'}</p></div>`) + lista;
   document.querySelectorAll('#sorteioBox .rv').forEach(el=>io.observe(el));
 })();
 
