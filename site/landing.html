@@ -218,6 +218,31 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .sorteio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px;align-items:start}
 .chipz{display:flex;flex-wrap:wrap;gap:8px}
 .chipok{background:var(--emer-soft);color:var(--emer);border:1px solid #1f5e3e;border-radius:999px;padding:6px 12px;font-weight:800;font-size:14px}
+
+.dl-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:12px}
+@media (max-width:760px){.dl-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dl-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;align-items:start}
+@media (max-width:820px){.dl-grid{grid-template-columns:1fr}}
+.dl-side{display:flex;flex-direction:column;gap:12px}
+.dlb{display:grid;grid-template-columns:minmax(90px,150px) 1fr 34px;gap:10px;align-items:center;padding:3px 0;position:relative;cursor:default}
+.dlb .n{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dlb .tr{height:12px;background:var(--panel2);border-radius:4px;overflow:hidden}
+.dlb .tr i{display:block;height:100%;width:0;border-radius:0 4px 4px 0;background:var(--gold);transition:width 1s cubic-bezier(.2,1,.3,1)}
+.dlb.full .tr i{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.dlb.miss .tr i{background:#8a6a2a}
+.dlb .v{font-family:var(--display);font-size:17px;text-align:right;font-variant-numeric:tabular-nums}
+.dlb:hover .n{color:var(--gold2)}
+.dlb .tip{position:absolute;right:44px;top:-34px;background:#000;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:3}
+.dlb:hover .tip,.dlb:focus .tip{opacity:1}
+.dl-note{font-size:12px;color:var(--muted);margin:10px 0 0}
+.dl-win{text-align:center;border-color:var(--gold);background:radial-gradient(300px 160px at 50% 0,#3a2b0e,transparent),var(--panel)}
+.dl-win .w{font-family:var(--display);font-size:32px;color:var(--gold2);line-height:1.1;margin-top:4px}
+.dl-win p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.donut{display:flex;align-items:center;gap:16px}
+.donut svg{width:120px;height:120px;flex:none}
+.donut ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.donut li{display:flex;align-items:center;gap:8px}
+.donut li i{width:10px;height:10px;border-radius:3px;display:inline-block}
 footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:12px;text-align:center}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.pd .who{opacity:1;transform:none}}
 </style>
@@ -241,6 +266,19 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   </div>
   <div class="scroll">ROLE ▾</div>
 </header>
+
+<section id="destaque-liga"><div class="wrap">
+  <div class="head rv"><span class="kick" id="dlKick">Última Liga de Clãs</span><h2>Como foi a nossa Liga</h2><p class="sub" id="dlSub"></p></div>
+  <div class="dl-tiles" id="dlTiles"></div>
+  <div class="dl-grid">
+    <div class="box rv dl-chart"><h3>Estrelas por jogador</h3><div id="dlBars" role="img"></div><p class="dl-note">Máximo possível: 21 ⭐ (7 ataques de 3 estrelas). Passe o dedo ou o mouse nas barras para ver os detalhes.</p></div>
+    <div class="dl-side">
+      <div class="box rv dl-win" id="dlWin"></div>
+      <div class="box rv"><h3>Aproveitamento dos ataques</h3><div id="dlDonut"></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px" class="rv"><a class="btn" href="#painel/liga">Ver resultado completo no painel →</a></div>
+</div></section>
 
 <section id="vantagens"><div class="wrap">
   <div class="head rv"><span class="kick">Por que a Tropa</span><h2>Aqui o clã funciona</h2><p class="sub">Regras claras, ranking aberto e prêmio pra quem joga sério.</p></div>
@@ -480,6 +518,47 @@ const TK=document.querySelector('.ticket').outerHTML.replace('id="tk"','id="tk2"
     ? `<div class="sorteio rv"><div>${TK}</div><div class="kick" style="margin-top:6px">Ganhador</div><div class="big">${S.map(r=>esc(r.jogador)).join(' · ')}</div><p>${esc(S[0].premio||'Bilhete dourado')} · ${esc(S[0].liga||'')}</p><p style="margin-top:10px">🎬 O vídeo com o resultado do sorteio está no grupo do WhatsApp.</p></div>`
     : `<div class="sorteio rv"><div>${TK}</div><div class="big">Em breve</div><p>${P.length?'Regra: 7 ataques na Liga e nenhum ataque de 1 estrela. O resultado sai em vídeo no grupo do WhatsApp.':'O ganhador do bilhete dourado da próxima Liga aparece aqui.'}</p></div>`) + lista;
   document.querySelectorAll('#sorteioBox .rv').forEach(el=>io.observe(el));
+})();
+
+
+/* ---- destaque da Liga na home ---- */
+(function(){
+  const L=DATA.liga.map(r=>({nome:r.jogador,e:num(r.estrelas)||0,p:num(r.destruicao_total_pct)||0,f:num(r.ataques_feitos)||0,d:num(r.ataques_disponiveis)||0})).filter(r=>r.d>0);
+  if(!L.length){$('#destaque-liga').hidden=true;return}
+  L.sort((a,b)=>b.e-a.e||b.p-a.p);
+  const S=(DATA.sorteio||[]).filter(r=>r.jogador);
+  const liga=S[0]?.liga||'Última Liga de Clãs';
+  const tE=L.reduce((s,r)=>s+r.e,0),tF=L.reduce((s,r)=>s+r.f,0),tD=L.reduce((s,r)=>s+r.d,0),tP=L.reduce((s,r)=>s+r.p,0);
+  const max=L.length*21, perf=L.filter(r=>r.e===21).length;
+  $('#dlKick').textContent=liga;
+  $('#dlSub').textContent=`${L.length} guerreiros escalados em 7 rodadas.`;
+  $('#dlTiles').innerHTML=[
+    [tE,'Estrelas da Tropa',`de ${max} possíveis`],
+    [Math.round(tP/Math.max(tF,1)),'Destruição média','por ataque','%'],
+    [tF,'Ataques usados',`de ${tD}`],
+    [perf,'Liga perfeita','21 ⭐ em 7 ataques'],
+  ].map(([v,l,e,suf=''])=>`<div class="ct rv"><small>${l}</small><b data-to="${v}" data-suf="${suf}">0${suf}</b><em>${e}</em></div>`).join('');
+  $('#dlBars').setAttribute('aria-label','Estrelas por jogador na Liga: '+L.map(r=>r.nome+' '+r.e).join(', '));
+  $('#dlBars').innerHTML=L.map(r=>`<div class="dlb ${r.e===21?'full':''} ${r.f<r.d?'miss':''}" tabindex="0">
+      <span class="n">${esc(r.nome)}</span><span class="tr"><i data-w="${100*r.e/21}"></i></span><span class="v">${r.e}</span>
+      <span class="tip">${r.e} ⭐ · ${r.p}% · ${r.f}/${r.d} ataques${r.f<r.d?' (faltou '+(r.d-r.f)+')':''}</span></div>`).join('');
+  $('#dlWin').innerHTML = S.length
+    ? `<div>${TK}</div><div class="kick" style="margin-top:6px">Bilhete dourado</div><div class="w">${esc(S[0].jogador)}</div><p>🎬 Vídeo do sorteio no grupo do WhatsApp</p>`
+    : `<div>${TK}</div><div class="kick" style="margin-top:6px">Bilhete dourado</div><div class="w">Em breve</div><p>Sorteado entre quem faz os 7 ataques sem nenhum de 1 estrela</p>`;
+  const usados=tF, perd=tD-tF, C=2*Math.PI*44, fr=usados/Math.max(tD,1);
+  $('#dlDonut').innerHTML=`<div class="donut"><svg viewBox="0 0 120 120" role="img" aria-label="${usados} de ${tD} ataques usados">
+      <circle cx="60" cy="60" r="44" fill="none" stroke="var(--panel2)" stroke-width="14"/>
+      <circle class="arc" cx="60" cy="60" r="44" fill="none" stroke="var(--gold)" stroke-width="14" stroke-linecap="round"
+        stroke-dasharray="0 ${C}" data-len="${C*fr}" data-c="${C}" transform="rotate(-90 60 60)" style="transition:stroke-dasharray 1.2s cubic-bezier(.2,1,.3,1)"/>
+      <text x="60" y="58" text-anchor="middle" fill="var(--fg)" font-family="Lilita One" font-size="24">${Math.round(100*fr)}%</text>
+      <text x="60" y="76" text-anchor="middle" fill="var(--muted)" font-size="10" font-weight="800">USADOS</text></svg>
+    <ul><li><i style="background:var(--gold)"></i>${usados} ataques usados</li><li><i style="background:var(--panel2);border:1px solid var(--line)"></i>${perd} ataque${perd===1?'':'s'} perdido${perd===1?'':'s'}</li></ul></div>`;
+  const ioL=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.tr i').forEach(i=>i.style.width=i.dataset.w+'%');
+    e.target.querySelectorAll('.arc').forEach(a=>a.setAttribute('stroke-dasharray',a.dataset.len+' '+a.dataset.c));
+    ioL.unobserve(e.target)}),{threshold:.2});
+  ioL.observe($('#dlBars')); ioL.observe($('#dlDonut'));
+  document.querySelectorAll('#dlTiles .ct').forEach(el=>io.observe(el));
 })();
 
 /* ---- rotas: Início / Painel ---- */
